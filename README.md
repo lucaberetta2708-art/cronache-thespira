@@ -10,6 +10,23 @@ Wiki illustrata e cronologica della campagna. Il prototipo contiene:
 - Ricerca funzionante (clicca Cerca oppure premi `/`)
 - Layout mobile e desktop, navigazione con collegamenti tra voci
 
+## La mappa illustrata (nuovo)
+
+- Apri `#/mappa`, oppure usa **Atlante → Mappa di Thespira**.
+- La mappa è quella originale fornita dal DM, nel file `assets/mappa-thespira.jpg`.
+- Con mouse: rotella per lo zoom, trascinamento per spostarsi, doppio clic per ingrandire.
+- Con smartphone: trascinamento a un dito, pizzico a due dita per ingrandire.
+- Pulsanti **+**, **−**, **Centra** ed **Espandi**.
+- La carta non contiene ancora punti cliccabili: verranno aggiunti solo quando il DM avrà approvato le posizioni e le informazioni rivelabili ai giocatori.
+- Logica JavaScript del visualizzatore: `map.js`.
+
+## Come aggiornare un repository GitHub Pages già esistente
+
+1. Estrai lo ZIP della nuova versione.
+2. Nel repository GitHub usa **Add file → Upload files** e trascina **tutti i file** presenti nello ZIP, compresi `map.js` e `assets/mappa-thespira.jpg`.
+3. Per i file già esistenti GitHub dovrebbe proporre un aggiornamento; conferma **Commit changes**. Se la modalità di caricamento non permette di sovrascrivere i file, usa la modifica di ciascun file o un caricamento via Git locale. Non cancellare il repository.
+4. Attendi il nuovo deploy di GitHub Pages e ricarica il sito (Ctrl+F5 se serve).
+
 ## Perché non ci sono le pose sheet?
 
 Le tavole di studio dei personaggi sono **materiale privato del DM**. Non devono finire nel sito condiviso. Dove necessario, sono presenti segnaposto per futuri ritratti e illustrazioni approvati per la pubblicazione.

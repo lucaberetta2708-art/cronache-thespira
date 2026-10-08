@@ -2,6 +2,7 @@
 (() => {
   "use strict";
   const data = CHRONICLES;
+  let destroyMapViewer = null;
   const main = document.getElementById("main-content");
   const menu = document.getElementById("menu-toggle");
   const sidebar = document.getElementById("sidebar");
@@ -34,6 +35,7 @@
       </div>
       <h2 class="section-title rule-title">Esplora l'archivio</h2>
       <div class="tile-grid"><a class="topic-card" href="#/cronologia"><span class="topic-icon">☷</span><strong>Cronologia</strong><small>${data.chapters.length} archi narrativi · ${count} pubblicato</small></a>${sections.map(s=>`<a class="topic-card" href="#/${s.path}"><span class="topic-icon">${s.icon}</span><strong>${esc(s.title)}</strong><small>${esc(s.caption)}</small></a>`).join("")}</div>
+      <div class="home-map-feature"><img src="assets/mappa-thespira.jpg" alt="Estratto dalla mappa del continente insulare di Thespira" loading="lazy"><div><span class="note">Cartografia del continente</span><h2>La mappa di Thespira</h2><p>Consulta la carta, esplora le regioni e ingrandisci i dettagli direttamente dal browser.</p><a class="button-link" href="#/mappa">Apri la mappa <span>→</span></a></div></div>
       <p class="info-banner">Queste pagine raccolgono soltanto informazioni note alla compagnia. Le voci vengono pubblicate e aggiornate man mano che la cronaca prende forma, senza anticipare i segreti dell'avventura.</p>
       <div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
   }
@@ -64,8 +66,9 @@
   }
   function renderCollection(s) {
     const items=data[s.collection];
+    const mapIntro = s.collection === "places" ? `<a class="atlas-map-teaser" href="#/mappa"><img src="assets/mappa-thespira.jpg" alt="Mappa illustrata di Thespira, con regioni e città" loading="lazy"><span><small>Cartografia</small><strong>La mappa di Thespira</strong><em>Apri la carta geografica, ingrandisci e spostati per esplorare i dettagli.</em><b>Consulta la mappa →</b></span></a>` : "";
     return page(`${breadcrumb({label:s.title})}${title("L'enciclopedia",s.title,`${items.length} ${s.plural} già documentati. Le voci sono aggiornate soltanto con informazioni conosciute dalla compagnia.`)}
-      <div class="card-grid">${items.map(x=>`<a class="entry-card" href="${linkFor(s,x)}"><div class="eyebrow">${esc(x.role||x.type)}</div><h3>${esc(x.name)}</h3><p>${esc(x.intro)}</p><div class="arrow">Apri la scheda →</div></a>`).join("")}</div>
+      ${mapIntro}<div class="card-grid">${items.map(x=>`<a class="entry-card" href="${linkFor(s,x)}"><div class="eyebrow">${esc(x.role||x.type)}</div><h3>${esc(x.name)}</h3><p>${esc(x.intro)}</p><div class="arrow">Apri la scheda →</div></a>`).join("")}</div>
       <p class="info-banner">Le illustrazioni definitive compariranno nelle singole schede: non verranno pubblicati i Character Pose Sheet utilizzati per definire il design dei personaggi.</p>`);
   }
   function renderEntry(s,slug) {
@@ -79,15 +82,41 @@
       ${item.questions?`<h2 class="section-title rule-title">Domande aperte</h2><ul class="fact-list">${item.questions.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
       ${relations(item)}<div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
   }
+  function renderMap() {
+    return page(`${breadcrumb({label:"Atlante",href:"#/luoghi"},{label:"Mappa di Thespira"})}${title("Cartografia di Thespira","La mappa del continente","La carta geografica delle terre di Thespira. Puoi ingrandirla e spostarla per leggere i dettagli.")}
+      <div class="map-frame" id="map-frame">
+        <div class="map-tools" role="toolbar" aria-label="Comandi della mappa">
+          <div class="map-tools-title"><span aria-hidden="true">✧</span><strong>Thespira</strong><small>Mappa del continente</small></div>
+          <div class="map-tool-actions">
+            <button type="button" data-map="minus" aria-label="Riduci ingrandimento" title="Riduci">−</button>
+            <output id="map-zoom" aria-label="Ingrandimento corrente">100%</output>
+            <button type="button" data-map="plus" aria-label="Aumenta ingrandimento" title="Ingrandisci">+</button>
+            <button type="button" data-map="reset" title="Torna alla vista completa">Centra</button>
+            <button type="button" data-map="expand" aria-pressed="false" title="Espandi la mappa">Espandi ⛶</button>
+          </div>
+        </div>
+        <div class="map-viewport" id="map-viewport" tabindex="0" aria-label="Mappa di Thespira. Usa i pulsanti per ingrandire, le frecce per spostarti oppure trascina con il mouse o con il dito.">
+          <img src="assets/mappa-thespira.jpg" id="map-image" alt="Mappa illustrata del continente di Thespira con le regioni, i fiumi e le principali località" draggable="false">
+        </div>
+      </div>
+      <p class="map-help"><strong>Come esplorarla:</strong> usa + e − oppure la rotella del mouse per ingrandire, trascina per spostarti. Da smartphone usa due dita per lo zoom. Premi <strong>Centra</strong> per tornare alla vista generale.</p>
+      <div class="info-banner"><strong>Una mappa, tante storie.</strong> Questa prima versione è una carta consultabile. In futuro potremo aggiungere segnaposti cliccabili collegati alle schede dei luoghi, mantenendo nascosti eventuali contenuti ancora sconosciuti alla compagnia.</div>
+      <h2 class="section-title rule-title">Esplora le voci dell'Atlante</h2>
+      <div class="related"><a href="#/luoghi">Tutti i luoghi documentati ↗</a><a href="#/cronologia">Cronologia del viaggio ↗</a></div>
+      <div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
+  }
   function renderNotFound() {return page(`${title("Pagina non trovata","Questa voce non è disponibile","Il contenuto potrebbe essere ancora in preparazione.")}<a class="button-link" href="#/">Torna alla panoramica →</a>`);}
   function normalizedHash() {const raw=location.hash.slice(1)||"/";return raw.replace(/^\/+/,"/").split("?")[0].split("#")[0];}
   function navigate() {
+    if (destroyMapViewer) {destroyMapViewer();destroyMapViewer = null;}
     const route=normalizedHash();let html;
     if(route==="/")html=renderHome();
     else if(route==="/cronologia")html=renderTimeline();
+    else if(route==="/mappa")html=renderMap();
     else if(route==="/cronologia/manna")html=renderChapter("manna");
     else {const seg=route.split("/").filter(Boolean);const section=sections.find(x=>x.path===seg[0]);html=section?(seg.length===1?renderCollection(section):seg.length===2?renderEntry(section,seg[1]):renderNotFound()):renderNotFound();}
     main.innerHTML=html;
+    if (route === "/mappa") destroyMapViewer = initThespiraMap(main);
     const navActive=route==="/"?"#/":route.startsWith("/cronologia/")?"#/cronologia/manna":"#/"+(route.split("/")[1]||"");
     document.querySelectorAll("[data-nav]").forEach(x=>x.classList.toggle("active",x.getAttribute("href")===navActive));
     document.title=(route==="/"?"Cronache di Thespira":(main.querySelector("h1")?.textContent||"Cronache")+" — Cronache di Thespira");
@@ -99,6 +128,7 @@
   shade.addEventListener("click",closeMenu);
   function allSearchEntries() {return [
     {name:"Manna e Lilith-Zetto",type:"Capitolo",href:"#/cronologia/manna",description:data.chapters[0].description},
+    {name:"Mappa di Thespira",type:"Atlante",href:"#/mappa",description:"Carta geografica illustrata, ingrandibile e navigabile: Nemorae, Surturheim, Aurelia, Velmora e Ashamir."},
     ...sections.flatMap(s=>data[s.collection].map(x=>({name:x.name,type:s.title,href:linkFor(s,x),description:x.intro,extra:[...(x.facts||[]),...(x.questions||[])].join(" ")})))
   ];}
   function showSearch() {backdrop.hidden=false;searchInput.value="";showResults("");searchInput.focus();document.body.style.overflow="hidden";}
