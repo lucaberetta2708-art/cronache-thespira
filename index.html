@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#20312c">
+  <meta name="description" content="Cronache di Thespira: l'atlante narrativo della compagnia, tra personaggi, luoghi, avventure e misteri.">
+  <title>Cronache di Thespira</title>
+  <link rel="icon" href="assets/sigil.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main-content">Vai al contenuto</a>
+  <div class="shell">
+    <header class="site-header">
+      <a class="brand" href="#/" aria-label="Cronache di Thespira — pagina iniziale">
+        <img src="assets/sigil.svg" alt="" width="39" height="39">
+        <span class="brand-lines"><strong>CRONACHE <span>DI</span> THESPIRA</strong><small>Un viaggio nelle terre dell'isola</small></span>
+      </a>
+      <div class="header-actions">
+        <button class="search-toggle" id="search-toggle" aria-label="Apri ricerca" title="Cerca nelle Cronache"><span aria-hidden="true">⌕</span><span class="search-action-label">Cerca</span><kbd>/</kbd></button>
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="sidebar">☰ <span>Menu</span></button>
+      </div>
+    </header>
+    <div class="workbench">
+      <aside class="sidebar" id="sidebar" aria-label="Navigazione principale">
+        <nav class="sidebar-nav">
+          <div class="nav-group"><div class="nav-heading">Il viaggio</div>
+            <a class="nav-link" data-nav href="#/"><span class="nav-icon">⌂</span> Panoramica</a>
+            <a class="nav-link" data-nav href="#/cronologia"><span class="nav-icon">☷</span> Cronologia</a>
+            <a class="nav-link sublink" data-nav href="#/cronologia/manna">I · Manna e Lilith-Zetto</a>
+          </div>
+          <div class="nav-group"><div class="nav-heading">L'enciclopedia</div>
+            <a class="nav-link" data-nav href="#/personaggi"><span class="nav-icon">♙</span> Personaggi</a>
+            <a class="nav-link" data-nav href="#/luoghi"><span class="nav-icon">⌖</span> Atlante</a>
+            <a class="nav-link" data-nav href="#/scoperte"><span class="nav-icon">✧</span> Scoperte e misteri</a>
+          </div>
+          <div class="nav-group"><div class="nav-heading">La compagnia</div>
+            <div class="roster">Akros · Baldur Hawthorne · Brann Caradoc · Derrick Bombarrion · Orgen · Tomato Goldenfield</div>
+          </div>
+        </nav>
+        <div class="sidebar-footer"><span class="flame">✦</span> Ogni pagina racconta soltanto ciò che gli avventurieri hanno appreso.</div>
+      </aside>
+      <div class="mobile-shade" id="mobile-shade" hidden></div>
+      <main id="main-content" class="main-content" tabindex="-1" aria-live="polite"></main>
+    </div>
+    <footer class="site-footer"><span>✥ &nbsp; CRONACHE DI THESPIRA &nbsp; ✥</span><span>Un archivio in continua evoluzione</span></footer>
+  </div>
+  <div class="dialog-backdrop" id="search-backdrop" hidden>
+    <section class="search-panel" role="dialog" aria-modal="true" aria-labelledby="search-title">
+      <div class="search-heading"><h2 id="search-title">Cerca nelle Cronache</h2><button id="search-close" type="button" aria-label="Chiudi ricerca">✕</button></div>
+      <label class="visually-hidden" for="search-input">Cerca per nome, luogo o avvenimento</label>
+      <input id="search-input" type="search" autocomplete="off" placeholder="Un nome, un luogo, una scoperta…">
+      <div id="search-results" class="search-results"></div>
+      <p class="search-hint">Premi Esc per chiudere. La ricerca comprende solo le voci già pubblicate.</p>
+    </section>
+  </div>
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

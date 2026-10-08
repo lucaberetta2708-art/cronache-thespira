@@ -1,0 +1,45 @@
+# Cronache di Thespira — prototipo pubblico
+
+Wiki illustrata e cronologica della campagna. Il prototipo contiene:
+
+- Home e riepilogo dell'ultimo punto noto (Ebavurage, Le Due Lanterne)
+- Cronologia dei nove archi, con il **Capitolo I, Manna e Lilith-Zetto**, già pubblicato
+- Schede di Wilhelm Codroipo, Margravio di Manna, Lilith-Zetto e vecchio della foresta
+- Atlante: Manna, Cervo Sonnacchioso, Foreste di Nemorae, baracca, antro della megera
+- Scoperte: la prima pagina
+- Ricerca funzionante (clicca Cerca oppure premi `/`)
+- Layout mobile e desktop, navigazione con collegamenti tra voci
+
+## Perché non ci sono le pose sheet?
+
+Le tavole di studio dei personaggi sono **materiale privato del DM**. Non devono finire nel sito condiviso. Dove necessario, sono presenti segnaposto per futuri ritratti e illustrazioni approvati per la pubblicazione.
+
+## Aprire in locale
+
+Fai doppio clic su `index.html`. Tutto il contenuto è incorporato in file statici, senza dipendenze esterne e senza bisogno di un server.
+
+## Pubblicare con GitHub Pages
+
+1. Crea (o usa) un account su https://github.com/.
+2. Crea un nuovo repository **pubblico**, per esempio `cronache-thespira`.
+3. Carica nella radice del repository i file e le cartelle contenuti in questo ZIP, **non** lo ZIP stesso e **non** la cartella superiore.
+4. Apri le impostazioni del repository: **Settings → Pages**.
+5. In **Build and deployment** scegli **Deploy from a branch**, poi `main` e `/(root)`; salva.
+6. Una volta pubblicato, il sito sarà disponibile a un indirizzo analogo a `https://NOMEUTENTE.github.io/cronache-thespira/`.
+
+Per nuovi aggiornamenti modifica `content.js` e, se necessario, `app.js` e `styles.css`, poi carica le versioni aggiornate nello stesso repository. Il link del sito resta lo stesso.
+
+**Importante:** un sito GitHub Pages è pubblicamente accessibile. Non pubblicare schede del DM, spoiler non rivelati, dati personali o altri materiali riservati. Il repository pubblico espone anche i file sorgente.
+
+## Come si aggiornano i contenuti
+
+- `content.js`: contiene schede PNG (`people`), luoghi (`places`), scoperte (`discoveries`) e indice capitoli (`chapters`).
+- `app.js`: contiene i testi strutturati del Capitolo I nella costante `ch1Sections` e il sistema di navigazione/ricerca. Per nuovi capitoli sarà opportuno estrarre i testi in un file dedicato.
+- `styles.css`: impaginazione, tipografia, colori e layout adattivo.
+- `assets/`: eventuali immagini originali o autorizzate per la cronaca (non pose sheet private).
+
+**Protocollo spoiler:** pubblicare solo ciò che i giocatori hanno effettivamente scoperto. Eventi futuri, origini segrete dei personaggi e materiale del DM vanno in un archivio separato e non devono essere inseriti neppure nei file del sito.
+
+## Stato
+
+Questo ZIP è una **prima bozza funzionante**. Non è online finché non viene pubblicato su un servizio di hosting. Le illustrazioni narrative definitive sono ancora da realizzare.
