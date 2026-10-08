@@ -34,7 +34,7 @@
         <section class="panel"><div class="note">Ultima situazione nota</div><h2 class="location-now">${esc(data.current.place)}</h2><p>${esc(data.current.subtitle)}</p><p class="subtle">${esc(data.current.next)}</p></section>
       </div>
       <h2 class="section-title rule-title">Esplora l'archivio</h2>
-      <div class="tile-grid"><a class="topic-card" href="#/cronologia"><span class="topic-icon">☷</span><strong>Cronologia</strong><small>${data.chapters.length} archi narrativi · ${count} pubblicato</small></a>${sections.map(s=>`<a class="topic-card" href="#/${s.path}"><span class="topic-icon">${s.icon}</span><strong>${esc(s.title)}</strong><small>${esc(s.caption)}</small></a>`).join("")}</div>
+      <div class="tile-grid"><a class="topic-card" href="#/cronologia"><span class="topic-icon">☷</span><strong>Cronologia</strong><small>${data.chapters.length} archi narrativi · ${count} ${count===1?"pubblicato":"pubblicati"}</small></a>${sections.map(s=>`<a class="topic-card" href="#/${s.path}"><span class="topic-icon">${s.icon}</span><strong>${esc(s.title)}</strong><small>${esc(s.caption)}</small></a>`).join("")}</div>
       <div class="home-map-feature"><img src="assets/mappa-thespira.jpg" alt="Estratto dalla mappa del continente insulare di Thespira" loading="lazy"><div><span class="note">Cartografia del continente</span><h2>La mappa di Thespira</h2><p>Consulta la carta, esplora le regioni e ingrandisci i dettagli direttamente dal browser.</p><a class="button-link" href="#/mappa">Apri la mappa <span>→</span></a></div></div>
       <p class="info-banner">Queste pagine raccolgono soltanto informazioni note alla compagnia. Le voci vengono pubblicate e aggiornate man mano che la cronaca prende forma, senza anticipare i segreti dell'avventura.</p>
       <div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
@@ -52,7 +52,25 @@
     {id:"megera",title:"5. Lo scontro con Lilith-Zetto", body:`<p>La mattina successiva, seguendo le indicazioni ricevute, la compagnia raggiunge <a href="#/luoghi/antro-megera">l'antro della Megera Verde</a>.</p><p>Gli avventurieri affrontano Lilith-Zetto e riescono a sconfiggerla, ponendo fine alla minaccia per Manna. <strong>La bambina rapita, tuttavia, non può essere salvata.</strong></p>`},
     {id:"messaggio",title:"6. Il messaggio del vecchio", body:`<p>Sulla via del ritorno gli avventurieri raggiungono nuovamente la baracca, ma il suo proprietario è scomparso.</p><p>Il vecchio ha lasciato un messaggio per Brann: sa che il kenku ha sottratto la pagina, ma non ne chiede la restituzione. Desidera invece che Brann la conservi.</p><p>La compagnia torna a Manna portando con sé il documento, di cui nessuno conosce ancora l'origine o il significato.</p>`}
   ];
+  const ch2Sections = [
+    {id:"selese",title:"1. L’ordine di Selese Arco", body:`<p>Dopo la sconfitta di Lilith-Zetto, la compagnia torna a <a href="#/luoghi/manna">Manna</a> per ricevere la ricompensa e riposarsi al <a href="#/luoghi/cervo-sonnacchioso">Cervo Sonnacchioso</a>. Qui viene raggiunta da quattro guardie guidate da <a href="#/personaggi/selese-arco">Magistra Selese Arco</a>, una donna vestita di bianco, oro e blu.</p><p>Selese si presenta come membro del <strong>Settenario Aureo</strong>, il gruppo d’élite della Chiesa di Amaunator. Accusa gli avventurieri di aver intralciato un’indagine che la Chiesa stava conducendo nelle Foreste di Nemorae, anche in relazione alle attività di Lilith-Zetto.</p><p>Come compensazione, impone al gruppo un incarico: rintracciare e sterminare un accampamento itinerante di nomadi originari di Heliara, che descrive come traditori della Chiesa. L’accampamento si muove nelle terre a nord di Manna. Al termine, la compagnia dovrà fare rapporto a Lantrelle, un avamposto commerciale a nord-est.</p>`},
+    {id:"nero",title:"2. L’incontro con Nero", body:`<p>Durante il viaggio verso nord, gli avventurieri incontrano <a href="#/personaggi/nero">Nero</a>, uno sconosciuto interamente vestito di nero e riconoscibile per un vistoso cappello a cilindro.</p><p>La compagnia lo salva da un <strong>androsfinge</strong>. In segno di riconoscenza, Nero consegna ai suoi soccorritori <a href="#/scoperte/anelli-acqua">quattro Anelli del Camminare sull’Acqua</a>.</p>`},
+    {id:"arel",title:"3. Arel e l’accampamento", body:`<p>Proseguendo, gli avventurieri soccorrono un bambino di nome <a href="#/personaggi/arel">Arel</a>. Il piccolo appartiene proprio al gruppo di nomadi che Selese ha ordinato di eliminare e, inconsapevolmente, conduce la compagnia al loro <a href="#/luoghi/accampamento-reietti">accampamento</a>.</p><p>L’incontro con gli abitanti non conferma la descrizione fornita dalla Magistra. I reietti si mostrano ospitali; <a href="#/personaggi/brannor">Brannor</a> invita gli avventurieri a condividere la cena e a trascorrere lì la notte.</p>`},
+    {id:"assalto",title:"4. L’assalto degli uomini della Chiesa", body:`<p>Durante la cena, un manipolo di uomini con le insegne della Chiesa di Amaunator attacca l’accampamento. Nell’assalto <strong>Arel viene ucciso</strong>.</p><p>Di fronte all’aggressione, gli avventurieri decidono di difendere i reietti, contravvenendo apertamente all’ordine impartito da Selese Arco. La compagnia combatte contro gli assalitori e riesce a sconfiggerli.</p>`},
+    {id:"brannor",title:"5. Il racconto di Brannor", body:`<p>Il giorno seguente, Brannor racconta agli avventurieri perché il suo gruppo sia perseguitato. Secondo la sua testimonianza, i reietti sono ex funzionari della Chiesa di Amaunator, fuggiti dopo aver scoperto involontariamente informazioni riservate.</p><p>Il fratello di Brannor gli avrebbe confidato che la Chiesa stava cercando <a href="#/scoperte/antico-diario">un antico diario</a> attraverso un’operazione di massima segretezza. Poco dopo, sarebbe stato ucciso a Heliara. Temendo per la propria vita, Brannor e altri sopravvissuti alla successiva epurazione si erano dati alla fuga.</p><p>Brannor ritiene che Selese sia stata incaricata di eliminare ogni possibile testimone. La compagnia ha ormai scelto di risparmiare e proteggere gli abitanti dell’accampamento. Resta da affrontare la richiesta della Magistra di fare rapporto a Lantrelle.</p>`}
+  ];
   function renderChapter(slug) {
+    if(slug==="reietti"){
+      const sectionsHtml=ch2Sections.map(x=>`<section id="${x.id}"><h2>${x.title}</h2>${x.body}</section>`).join("");
+      return page(`${breadcrumb({label:"Cronologia",href:"#/cronologia"},{label:"II · L’ordine di Selese Arco"})}${title("Capitolo II · Nemorae","L’ordine di Selese Arco")}
+        <div class="meta-line"><span class="small-pill pill-ready">Capitolo pubblicato</span><span class="small-pill">Manna · Terre a nord del villaggio</span></div>
+        <div class="chapter-lead">L’incontro con il Settenario Aureo, la ricerca dei reietti e la decisione della compagnia di opporsi alla Chiesa di Amaunator.</div>
+        <div class="article-layout"><article class="article-body">${sectionsHtml}
+        <section class="summary-box" aria-label="Riepilogo del capitolo"><h3>Il capitolo in breve</h3><ul><li>Selese Arco ordina di eliminare un accampamento di nomadi accusati di tradimento.</li><li>La compagnia salva Nero da un androsfinge e riceve quattro anelli magici.</li><li>Il bambino Arel conduce gli avventurieri all’accampamento, dove Brannor li ospita.</li><li>Uomini della Chiesa assaltano il campo e uccidono Arel; gli avventurieri difendono i reietti.</li><li>Brannor riferisce della ricerca segreta di un antico diario da parte della Chiesa.</li></ul></section>
+        <h2 class="section-title rule-title">Da approfondire</h2><div class="related"><a href="#/personaggi/selese-arco">Selese Arco ↗</a><a href="#/personaggi/nero">Nero ↗</a><a href="#/personaggi/arel">Arel ↗</a><a href="#/personaggi/brannor">Brannor ↗</a><a href="#/luoghi/accampamento-reietti">Accampamento dei reietti ↗</a><a href="#/scoperte/antico-diario">L’antico diario ↗</a></div>
+        </article><nav class="toc" aria-label="In questo capitolo"><strong>In questo capitolo</strong>${ch2Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</nav></div>
+        <div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
+    }
     if(slug!=="manna")return renderNotFound();
     const sectionsHtml=ch1Sections.map(x=>`<section id="${x.id}"><h2>${x.title}</h2>${x.body}</section>`).join("");
     return page(`${breadcrumb({label:"Cronologia",href:"#/cronologia"},{label:"I · Manna e Lilith-Zetto"})}${title("Capitolo I · Nemorae","Manna e Lilith-Zetto")}
@@ -114,10 +132,11 @@
     else if(route==="/cronologia")html=renderTimeline();
     else if(route==="/mappa")html=renderMap();
     else if(route==="/cronologia/manna")html=renderChapter("manna");
+    else if(route==="/cronologia/reietti")html=renderChapter("reietti");
     else {const seg=route.split("/").filter(Boolean);const section=sections.find(x=>x.path===seg[0]);html=section?(seg.length===1?renderCollection(section):seg.length===2?renderEntry(section,seg[1]):renderNotFound()):renderNotFound();}
     main.innerHTML=html;
     if (route === "/mappa") destroyMapViewer = initThespiraMap(main);
-    const navActive=route==="/"?"#/":route.startsWith("/cronologia/")?"#/cronologia/manna":"#/"+(route.split("/")[1]||"");
+    const navActive=route==="/"?"#/":route.startsWith("/cronologia/")?`#${route}`:"#/"+(route.split("/")[1]||"");
     document.querySelectorAll("[data-nav]").forEach(x=>x.classList.toggle("active",x.getAttribute("href")===navActive));
     document.title=(route==="/"?"Cronache di Thespira":(main.querySelector("h1")?.textContent||"Cronache")+" — Cronache di Thespira");
     if (!route.includes("/cronologia/manna")) window.scrollTo(0,0);
@@ -127,7 +146,7 @@
   menu.addEventListener("click",()=>{const open=sidebar.classList.toggle("open");shade.hidden=!open;menu.setAttribute("aria-expanded",String(open));});
   shade.addEventListener("click",closeMenu);
   function allSearchEntries() {return [
-    {name:"Manna e Lilith-Zetto",type:"Capitolo",href:"#/cronologia/manna",description:data.chapters[0].description},
+    ...data.chapters.filter(x=>x.published).map(x=>({name:x.title,type:"Capitolo",href:`#/cronologia/${x.slug}`,description:x.description})),
     {name:"Mappa di Thespira",type:"Atlante",href:"#/mappa",description:"Carta geografica illustrata, ingrandibile e navigabile: Nemorae, Surturheim, Aurelia, Velmora e Ashamir."},
     ...sections.flatMap(s=>data[s.collection].map(x=>({name:x.name,type:s.title,href:linkFor(s,x),description:x.intro,extra:[...(x.facts||[]),...(x.questions||[])].join(" ")})))
   ];}

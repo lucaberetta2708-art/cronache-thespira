@@ -60,3 +60,10 @@ Per nuovi aggiornamenti modifica `content.js` e, se necessario, `app.js` e `styl
 ## Stato
 
 Questo ZIP è una **prima bozza funzionante**. Non è online finché non viene pubblicato su un servizio di hosting. Le illustrazioni narrative definitive sono ancora da realizzare.
+
+
+## Capitolo II — L’ordine di Selese Arco
+
+Secondo capitolo pubblicato e collegato all’indice e alla ricerca: il rientro a Manna, il mandato della Magistra, l’incontro con Nero, il campo dei reietti e le informazioni riferite da Brannor. L’incontro con Cato Mirel resta nel Capitolo III (Lantrelle), in preparazione.
+
+Per aggiornare GitHub con il solo Capitolo II, sovrascrivere nella radice del repository `content.js`, `app.js`, `index.html` e facoltativamente `README.md`. Le risorse `assets/` e la mappa non richiedono modifiche.
