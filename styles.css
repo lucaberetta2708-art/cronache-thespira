@@ -39,3 +39,8 @@
 body.map-fullscreen{overflow:hidden}
 @media(max-width:700px){.home-map-feature{grid-template-columns:120px 1fr}.home-map-feature>img{max-height:290px}.home-map-feature>div{padding:16px}.home-map-feature h2{font-size:21px}.atlas-map-teaser{min-height:165px;gap:15px}.atlas-map-teaser>img{width:36%;min-height:165px}.atlas-map-teaser>span{padding:12px 10px 12px 0}.atlas-map-teaser strong{font-size:21px}.atlas-map-teaser em{font-size:13px}.map-viewport{height:60vh;min-height:420px}.map-tools{padding:10px}.map-tools-title strong{font-size:19px}.map-tools-title small{display:none}.map-tool-actions{gap:4px}.map-tool-actions button{padding:7px 8px}}
 @media(max-width:390px){.home-map-feature{grid-template-columns:100px 1fr}.atlas-map-teaser>img{width:31%}.map-tools{gap:6px}.map-tools-title{width:100%;justify-content:center}.map-tool-actions{width:100%;justify-content:center}}
+
+
+/* Ritratti illustrati dei PNG canonici. */
+.profile-portrait{padding:0;overflow:hidden;background:#ddd2bc;min-height:175px}.profile-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}.profile-top .profile-portrait{position:relative}
+@media(max-width:640px){.profile-portrait img{max-height:420px}}

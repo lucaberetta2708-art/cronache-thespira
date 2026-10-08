@@ -111,8 +111,9 @@
     if(!item)return renderNotFound();
     const details=s.collection==="people"?[{label:"Ruolo",val:item.role},{label:"Incontrato a",val:item.where}]:s.collection==="places"?[{label:"Categoria",val:item.type},{label:"Regione",val:item.region}]:[{label:"Tipo",val:item.type},{label:"Stato",val:item.state}];
     const facts=item.facts.map(x=>`<li>${esc(x)}</li>`).join("");
+    const visual=item.image?`<div class="profile-symbol profile-portrait"><img src="${esc(item.image)}" alt="Ritratto illustrato di ${esc(item.name)}" loading="lazy"></div>`:`<div class="profile-symbol" aria-label="Illustrazione non ancora disponibile"><span>${s.icon}</span><small>Ritratto da inserire</small></div>`;
     return page(`${breadcrumb({label:s.title,href:`#/${s.path}`},{label:item.name})}${title(s.title,item.name)}
-      <div class="profile-top"><div class="profile-symbol" aria-label="Illustrazione non ancora disponibile"><span>${s.icon}</span><small>Ritratto da inserire</small></div><div class="profile-brief"><p>${esc(item.intro)}</p><dl>${details.map(x=>`<dt>${esc(x.label)}</dt><dd>${esc(x.val)}</dd>`).join("")}</dl></div></div>
+      <div class="profile-top">${visual}<div class="profile-brief"><p>${esc(item.intro)}</p><dl>${details.map(x=>`<dt>${esc(x.label)}</dt><dd>${esc(x.val)}</dd>`).join("")}</dl></div></div>
       <h2 class="section-title rule-title">Cosa sa la compagnia</h2><ul class="fact-list">${facts}</ul>
       ${item.questions?`<h2 class="section-title rule-title">Domande aperte</h2><ul class="fact-list">${item.questions.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
       ${relations(item)}<div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
