@@ -28,7 +28,7 @@
   function relations(row) {const links=(row.relations||[]).map(getRelation).filter(Boolean);return links.length ? `<h2 class="section-title rule-title">Voci collegate</h2><div class="related">${links.map(x=>`<a href="${x.href}">${esc(x.name)} ↗</a>`).join("")}</div>`:"";}
   function renderHome() {
     const count=data.chapters.filter(x=>x.published).length;
-    return page(`<div class="hero"><img src="assets/forest.svg" alt="Illustrazione stilizzata di una foresta immersa nella nebbia"><div class="hero-content"><div class="hero-label">Atlante e memorie di viaggio</div><h1>Le Cronache<br>di Thespira</h1><p>Luoghi, personaggi e avvenimenti di una compagnia la cui storia è ancora in corso.</p></div></div>
+    return page(`<div class="hero hero-morien"><img src="assets/morien-cover.png" alt="Morien, il Giullare Nero, tra rovine e frammenti di realtà spezzata"><div class="hero-content"><div class="hero-label">Atlante e memorie di viaggio</div><h1>Le Cronache<br>di Thespira</h1><p>Luoghi, personaggi e avvenimenti di una compagnia la cui storia è ancora in corso.</p></div></div>
       <div class="feature-grid">
         <section class="panel"><div class="note">Da dove tutto ebbe inizio</div><h2>Capitolo I · Manna e Lilith-Zetto</h2><p>Una rissa in locanda, un furto maldestro e un'antica foresta: il primo incontro della compagnia e una pagina destinata a restare un mistero.</p><a class="button-link" href="#/cronologia/manna">Leggi il capitolo <span>→</span></a></section>
         <section class="panel"><div class="note">Ultima situazione nota</div><h2 class="location-now">${esc(data.current.place)}</h2><p>${esc(data.current.subtitle)}</p><p class="subtle">${esc(data.current.next)}</p></section>
