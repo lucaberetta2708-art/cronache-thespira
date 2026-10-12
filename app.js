@@ -224,12 +224,20 @@
       </article><nav class="toc" aria-label="In questo capitolo"><strong>In questo capitolo</strong>${ch1Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</nav></div>
       <div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
   }
+  // Miniature ottimizzate dei soli ritratti gia pubblicati; altre immagini usano il file originale.
+  const portraitThumbSlugs = new Set(["alina-veyrac", "armand-corbet", "cato-mirel", "don-batraci", "giotis-pana", "lethraen", "mercer-berus", "mira-voss", "paladino-oscuro", "roland-veyrac", "sefra-tre-dita", "selese-arco"]);
   function renderCollection(s) {
     const items=data[s.collection];
     const mapIntro = s.collection === "places" ? `<a class="atlas-map-teaser" href="#/mappa"><img src="assets/mappa-thespira.jpg" alt="Mappa illustrata di Thespira, con regioni e città" loading="lazy"><span><small>Cartografia</small><strong>La mappa di Thespira</strong><em>Apri la carta geografica, ingrandisci e spostati per esplorare i dettagli.</em><b>Consulta la mappa →</b></span></a>` : "";
     return page(`${breadcrumb({label:s.title})}${title("L'enciclopedia",s.title,`${items.length} ${s.plural} già documentati. Le voci sono aggiornate soltanto con informazioni conosciute dalla compagnia.`)}
-      ${mapIntro}<div class="card-grid">${items.map(x=>`<a class="entry-card" href="${linkFor(s,x)}"><div class="eyebrow">${esc(x.role||x.type)}</div><h3>${esc(x.name)}</h3><p>${esc(x.intro)}</p><div class="arrow">Apri la scheda →</div></a>`).join("")}</div>
-      <p class="info-banner">Le illustrazioni definitive compariranno nelle singole schede: non verranno pubblicati i Character Pose Sheet utilizzati per definire il design dei personaggi.</p>`);
+      ${mapIntro}<div class="card-grid${s.collection==="people"?" card-grid-people":""}">${items.map(x=>{
+        const copy=`<div class="eyebrow">${esc(x.role||x.type)}</div><h3>${esc(x.name)}</h3><p>${esc(x.intro)}</p><div class="arrow">Apri la scheda →</div>`;
+        if(s.collection!=="people")return `<a class="entry-card" href="${linkFor(s,x)}">${copy}</a>`;
+        const thumb=x.image?(portraitThumbSlugs.has(x.slug)?x.image.replace(/\.png$/,"-thumb.webp"):x.image):null;
+        const visual=thumb?`<span class="person-thumb"><img src="${esc(thumb)}" alt="" loading="lazy" decoding="async" width="96" height="124"></span>`:`<span class="person-thumb person-thumb-empty" aria-hidden="true">♙</span>`;
+        return `<a class="entry-card entry-card-person" href="${linkFor(s,x)}"><div class="person-card-layout">${visual}<div class="person-card-copy">${copy}</div></div></a>`;
+      }).join("")}</div>
+      <p class="info-banner">I ritratti illustrati accompagnano le voci già documentate. Le tavole complete dei Character Pose Sheet restano riferimenti grafici di progetto e non vengono pubblicate.</p>`);
   }
   function renderEntry(s,slug) {
     const item=data[s.collection].find(x=>x.slug===slug);

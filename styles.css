@@ -58,3 +58,18 @@ body.map-fullscreen{overflow:hidden}
   .hero-morien h1{font-size:clamp(31px,6vw,45px)}
   .hero-morien p{font-size:14px}
 }
+
+/* Personaggi: miniature editoriali leggere nell'indice enciclopedico. */
+.card-grid-people{grid-template-columns:repeat(auto-fit,minmax(min(100%,365px),1fr))}
+.entry-card-person{padding:15px 17px}
+.person-card-layout{display:flex;align-items:flex-start;gap:15px}
+.person-thumb{display:block;flex:0 0 96px;width:96px;height:124px;border:1px solid #cdbda5;border-radius:4px;overflow:hidden;background:#e7dfce;box-shadow:0 2px 6px #44331b14}
+.person-thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 24%}
+.person-thumb-empty{display:flex;align-items:center;justify-content:center;background:linear-gradient(150deg,#e3d9c5,#f7efdf 55%,#d7c7ac);font:46px Georgia,serif;color:#a89472}
+.person-card-copy{flex:1;min-width:0}
+.person-card-copy h3{font-size:20px;overflow-wrap:break-word;line-height:1.23}
+.person-card-copy p{margin-bottom:10px}
+@media(max-width:390px){.entry-card-person{padding:13px}.person-card-layout{gap:11px}.person-thumb{flex-basis:78px;width:78px;height:102px}.person-thumb-empty{font-size:38px}.person-card-copy h3{font-size:19px}}
+
+/* Schede illustrate: ritratti piu grandi su desktop, invariati su smartphone. */
+@media(min-width:641px){.profile-top .profile-portrait{flex:0 0 clamp(220px,24vw,270px);min-height:310px}}
