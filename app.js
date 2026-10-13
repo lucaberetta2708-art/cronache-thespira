@@ -225,7 +225,7 @@
       <div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
   }
   // Miniature ottimizzate dei soli ritratti gia pubblicati; altre immagini usano il file originale.
-  const portraitThumbSlugs = new Set(["nero", "wilhelm-codroipo", "alina-veyrac", "armand-corbet", "cato-mirel", "don-batraci", "giotis-pana", "lethraen", "mercer-berus", "mira-voss", "paladino-oscuro", "roland-veyrac", "sefra-tre-dita", "selese-arco"]);
+  const portraitThumbSlugs = new Set(["nero", "wilhelm-codroipo", "brambilla", "crucitti", "alina-veyrac", "armand-corbet", "cato-mirel", "don-batraci", "giotis-pana", "lethraen", "mercer-berus", "mira-voss", "paladino-oscuro", "roland-veyrac", "sefra-tre-dita", "selese-arco"]);
   function renderCollection(s) {
     const items=data[s.collection];
     const mapIntro = s.collection === "places" ? `<a class="atlas-map-teaser" href="#/mappa"><img src="assets/mappa-thespira.jpg" alt="Mappa illustrata di Thespira, con regioni e città" loading="lazy"><span><small>Cartografia</small><strong>La mappa di Thespira</strong><em>Apri la carta geografica, ingrandisci e spostati per esplorare i dettagli.</em><b>Consulta la mappa →</b></span></a>` : "";
@@ -237,7 +237,7 @@
         const visual=thumb?`<span class="person-thumb"><img src="${esc(thumb)}" alt="" loading="lazy" decoding="async" width="96" height="124"></span>`:`<span class="person-thumb person-thumb-empty" aria-hidden="true">♙</span>`;
         return `<a class="entry-card entry-card-person" href="${linkFor(s,x)}"><div class="person-card-layout">${visual}<div class="person-card-copy">${copy}</div></div></a>`;
       }).join("")}</div>
-      <p class="info-banner">I ritratti illustrati accompagnano le voci già documentate. Le tavole complete dei Character Pose Sheet restano riferimenti grafici di progetto e non vengono pubblicate.</p>`);
+      <p class="info-banner">I ritratti illustrati accompagnano le voci già documentate. Puoi sfogliare le tavole complete dei personaggi nell’<a href="#/artbook">Artbook di Thespira</a>.</p>`);
   }
   function renderEntry(s,slug) {
     const item=data[s.collection].find(x=>x.slug===slug);
