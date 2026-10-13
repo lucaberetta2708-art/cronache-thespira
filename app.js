@@ -225,7 +225,7 @@
       <div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
   }
   // Miniature ottimizzate dei soli ritratti gia pubblicati; altre immagini usano il file originale.
-  const portraitThumbSlugs = new Set(["alina-veyrac", "armand-corbet", "cato-mirel", "don-batraci", "giotis-pana", "lethraen", "mercer-berus", "mira-voss", "paladino-oscuro", "roland-veyrac", "sefra-tre-dita", "selese-arco"]);
+  const portraitThumbSlugs = new Set(["nero", "wilhelm-codroipo", "alina-veyrac", "armand-corbet", "cato-mirel", "don-batraci", "giotis-pana", "lethraen", "mercer-berus", "mira-voss", "paladino-oscuro", "roland-veyrac", "sefra-tre-dita", "selese-arco"]);
   function renderCollection(s) {
     const items=data[s.collection];
     const mapIntro = s.collection === "places" ? `<a class="atlas-map-teaser" href="#/mappa"><img src="assets/mappa-thespira.jpg" alt="Mappa illustrata di Thespira, con regioni e città" loading="lazy"><span><small>Cartografia</small><strong>La mappa di Thespira</strong><em>Apri la carta geografica, ingrandisci e spostati per esplorare i dettagli.</em><b>Consulta la mappa →</b></span></a>` : "";
