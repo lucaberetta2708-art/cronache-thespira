@@ -5,6 +5,8 @@ window.THESPIRA_ARTBOOK = [
   {slug:'selese-arco', name:'Magistra Selese Arco', src:'assets/artbook/selese-arco.png', chapter:'II', chapterTitle:'L’ordine di Selese Arco'},
   {slug:'nero', name:'Nero', src:'assets/artbook/nero.png', chapter:'II', chapterTitle:'L’ordine di Selese Arco'},
   {slug:'cato-mirel', name:'Magistro Cato Mirel', src:'assets/artbook/cato-mirel.png', chapter:'III', chapterTitle:'Il rapporto di Lantrelle'},
+  {slug:'brambilla', name:'Il Brambilla', src:'assets/artbook/brambilla.png', chapter:'III', chapterTitle:'Il rapporto di Lantrelle'},
+  {slug:'crucitti', name:'Il Crucitti', src:'assets/artbook/crucitti.png', chapter:'IV', chapterTitle:'Il Babau di Brugheroccia'},
   {slug:'mira-voss', name:'Mira Voss', src:'assets/artbook/mira-voss.png', chapter:'V', chapterTitle:'Obsydra e il Vecchio Paladino Oscuro'},
   {slug:'sefra-tre-dita', name:'Sefra Tre-Dita', src:'assets/artbook/sefra-tre-dita.png', chapter:'V', chapterTitle:'Obsydra e il Vecchio Paladino Oscuro'},
   {slug:'paladino-oscuro', name:'Vecchio Paladino Oscuro', src:'assets/artbook/paladino-oscuro.png', chapter:'V', chapterTitle:'Obsydra e il Vecchio Paladino Oscuro'},
@@ -21,7 +23,7 @@ window.renderThespiraArtbook = function () {
 };
 window.initThespiraArtbook = function (main) {
   const host = main.querySelector('#artbook-gallery');
-  const allowed = new Set(['selese-arco','cato-mirel','mercer-berus','don-batraci','giotis-pana','lethraen','paladino-oscuro','sefra-tre-dita','alina-veyrac','armand-corbet','roland-veyrac','mira-voss','wilhelm-codroipo','nero']);
+  const allowed = new Set(['selese-arco','cato-mirel','mercer-berus','don-batraci','giotis-pana','lethraen','paladino-oscuro','sefra-tre-dita','alina-veyrac','armand-corbet','roland-veyrac','mira-voss','wilhelm-codroipo','nero','brambilla','crucitti']);
   const rows = window.THESPIRA_ARTBOOK.filter(r => allowed.has(r.slug) && /^assets\/artbook\/[a-z0-9-]+\.(png|jpg|webp)$/.test(r.src));
   const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   if (!rows.length) { host.innerHTML = '<p class="info-banner">Le tavole saranno disponibili prossimamente.</p>'; return; }
