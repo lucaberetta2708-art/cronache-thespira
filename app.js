@@ -282,6 +282,7 @@
     if(route==="/")html=renderHome();
     else if(route==="/cronologia")html=renderTimeline();
     else if(route==="/mappa")html=renderMap();
+    else if(route==="/artbook")html=renderThespiraArtbook();
     else if(route==="/cronologia/manna")html=renderChapter("manna");
     else if(route==="/cronologia/reietti")html=renderChapter("reietti");
     else if(route==="/cronologia/lantrelle")html=renderChapter("lantrelle");
@@ -294,6 +295,7 @@
     else {const seg=route.split("/").filter(Boolean);const section=sections.find(x=>x.path===seg[0]);html=section?(seg.length===1?renderCollection(section):seg.length===2?renderEntry(section,seg[1]):renderNotFound()):renderNotFound();}
     main.innerHTML=html;
     if (route === "/mappa") destroyMapViewer = initThespiraMap(main);
+    if (route === "/artbook") initThespiraArtbook(main);
     const navActive=route==="/"?"#/":route.startsWith("/cronologia/")?`#${route}`:"#/"+(route.split("/")[1]||"");
     document.querySelectorAll("[data-nav]").forEach(x=>x.classList.toggle("active",x.getAttribute("href")===navActive));
     document.title=(route==="/"?"Cronache di Thespira":(main.querySelector("h1")?.textContent||"Cronache")+" — Cronache di Thespira");
