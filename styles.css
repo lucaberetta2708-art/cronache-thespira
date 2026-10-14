@@ -103,3 +103,7 @@ body.map-fullscreen{overflow:hidden}
 .map-unmapped-links{display:flex;flex-wrap:wrap;gap:8px}.map-unmapped-links a{display:inline-block;border:1px solid #dacba9;border-radius:5px;padding:7px 11px;color:#345041;font:600 12px system-ui,sans-serif;text-decoration:none;background:#fffdf7}
 .map-expanded .map-shortlist{display:none}
 @media(max-width:700px){.map-filterbar{padding:10px 9px;gap:7px}.map-filter-label{display:none}.map-filter-buttons{gap:5px}.map-filter-buttons button{padding:7px 9px;font-size:11px}.map-filter-count{font-size:11px}.map-popover{bottom:9px;right:9px;width:min(340px,calc(100% - 18px));padding:13px 39px 13px 14px}.map-popover h3{font-size:22px}.map-popover p{font-size:13px}}
+
+/* Nuove località approvate, con collocazione geografica orientativa. */
+.map-pin-approximate{background:#85512b;border-style:dashed;border-color:#fff1c8}
+.map-position-note{font:italic 12px/1.45 system-ui,sans-serif!important;color:#826e52!important;border-top:1px solid #dfd0b5;padding-top:9px;margin-top:11px!important}
