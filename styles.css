@@ -73,3 +73,33 @@ body.map-fullscreen{overflow:hidden}
 
 /* Schede illustrate: ritratti piu grandi su desktop, invariati su smartphone. */
 @media(min-width:641px){.profile-top .profile-portrait{flex:0 0 clamp(220px,24vw,270px);min-height:310px}}
+
+
+/* ATLANTE INTERATTIVO — PUNTI E FILTRI (FASE I) */
+.map-filterbar{background:#f5f0e3;border-bottom:1px solid #d7c6a4;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 15px;color:#40392f}
+.map-filter-label,.map-shortlist-title{font:700 10px system-ui,sans-serif;text-transform:uppercase;letter-spacing:1.4px;color:#7c6c51;flex:none}
+.map-filter-buttons{display:flex;gap:5px;flex-wrap:wrap;align-items:center;flex:1}
+.map-filter-buttons button,.map-shortlist button{border:1px solid #cec0a4;background:#fffaf0;color:#433829;padding:7px 11px;border-radius:50px;font:600 12px system-ui,sans-serif;min-height:34px;cursor:pointer}
+.map-filter-buttons button[aria-pressed="true"],.map-shortlist button[aria-pressed="true"]{background:#294437;border-color:#294437;color:#ffedd3}
+.map-filter-count{color:#736651;font:12px system-ui,sans-serif;white-space:nowrap}
+.map-pins-layer{position:absolute;transform-origin:center center;pointer-events:none;z-index:2;will-change:transform}
+.map-pin{position:absolute;box-sizing:border-box;display:grid;place-items:center;width:33px;height:33px;min-width:33px;min-height:33px;padding:0;border-radius:50%;border:2px solid #f9edc9;background:#203a2c;color:#fff5d8;box-shadow:0 2px 8px #1a1309b8;font:17px Georgia,serif;pointer-events:auto;cursor:pointer;transform-origin:center bottom;transition:background-color .14s ease,border-color .14s ease}
+.map-pin-regione{background:#80643b;color:#fff3d0}.map-pin-acqua{background:#3d6178;color:#fff}
+.map-pin[aria-pressed="true"]{background:#ad6e24;border-color:#fff;outline:3px solid #28392d;outline-offset:2px}
+.map-pin[hidden]{display:none!important}
+.map-pin-tooltip{position:absolute;bottom:37px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#22362ef2;color:#fff5df;border:1px solid #dcc298;padding:6px 9px;font:600 11px system-ui,sans-serif;border-radius:5px;box-shadow:0 3px 10px #0005;visibility:hidden;opacity:0;pointer-events:none}
+.map-pin:hover .map-pin-tooltip,.map-pin:focus-visible .map-pin-tooltip{visibility:visible;opacity:1}
+.map-pin:focus-visible,.map-filterbar button:focus-visible,.map-shortlist button:focus-visible,.map-popover button:focus-visible,.map-popover a:focus-visible,.map-unmapped a:focus-visible{outline:3px solid #bc892f;outline-offset:3px}
+.map-popover{position:absolute;z-index:5;right:14px;bottom:14px;width:min(345px,calc(100% - 28px));max-height:calc(100% - 28px);overflow:auto;border:1px solid #ad8e5b;border-radius:8px;background:#faf5e9f5;color:#332e25;padding:16px 42px 17px 17px;box-shadow:0 8px 30px #10140dcc;cursor:default;user-select:text;touch-action:pan-y}
+.map-popover[hidden]{display:none!important}
+.map-popover-close{position:absolute;right:8px;top:8px;display:grid;place-items:center;width:30px;height:30px;border-radius:5px;border:1px solid #d0bea1;background:#fdf9f2;color:#554e3f;font-size:23px;cursor:pointer}
+.map-popover-eyebrow{font:700 10px system-ui,sans-serif;letter-spacing:1.3px;text-transform:uppercase;color:#85683c}
+.map-popover h3{font:500 26px Georgia,serif;margin:6px 0 9px}.map-popover p{font:14px/1.5 system-ui,sans-serif;margin:0 0 11px}
+.map-popover-link{color:#365446;font:700 13px system-ui,sans-serif;text-decoration:underline;text-underline-offset:3px}.map-popover-note{font:12px system-ui,sans-serif;color:#82765f}
+.map-shortlist{background:#fcf7eb;display:flex;align-items:center;gap:7px;overflow:auto;padding:12px 14px;border-top:1px solid #c8b698;scrollbar-width:thin}
+.map-shortlist button{white-space:nowrap;flex:none}
+.map-unmapped{margin:20px 0;border:1px solid #ded3bd;border-radius:8px;background:#fcf8ef;padding:15px 18px;color:#403a32}
+.map-unmapped>strong{font:500 19px Georgia,serif}.map-unmapped p{color:#736a59;font-size:14px;margin:7px 0 12px;line-height:1.55}
+.map-unmapped-links{display:flex;flex-wrap:wrap;gap:8px}.map-unmapped-links a{display:inline-block;border:1px solid #dacba9;border-radius:5px;padding:7px 11px;color:#345041;font:600 12px system-ui,sans-serif;text-decoration:none;background:#fffdf7}
+.map-expanded .map-shortlist{display:none}
+@media(max-width:700px){.map-filterbar{padding:10px 9px;gap:7px}.map-filter-label{display:none}.map-filter-buttons{gap:5px}.map-filter-buttons button{padding:7px 9px;font-size:11px}.map-filter-count{font-size:11px}.map-popover{bottom:9px;right:9px;width:min(340px,calc(100% - 18px));padding:13px 39px 13px 14px}.map-popover h3{font-size:22px}.map-popover p{font-size:13px}}
