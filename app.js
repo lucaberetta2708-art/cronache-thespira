@@ -138,7 +138,7 @@
         <section class="summary-box" aria-label="Riepilogo del capitolo"><h3>Il capitolo in breve</h3><ul><li>Nel viaggio dopo la Gola, la compagnia affronta un Ettercap e due Ragni Giganti, quindi raggiunge Ebavurage al tramonto.</li><li>Roland Veyrac accoglie gli avventurieri mentre termina una disputa tra contadini e accenna agli attacchi al bestiame.</li><li>La prima sera al Cervo Soporoso diventa una festa con le esibizioni di Tomato e Baldur.</li><li>Derrick raggiunge Bastien al Prato delle Fiere; Akros segue Alina e apprende da Mireille, incontrata alla locanda, che Armand ha acquistato molte catene.</li><li>Il mattino seguente vengono trovati otto bovini massacrati. Derrick e Bastien sono trattenuti per accertamenti; Tomato ottiene la liberazione di Derrick.</li><li>L’esame delle ferite convince la compagnia che il responsabile possa essere un lupo mannaro. Akros percepisce su Alina un odore lupino.</li><li>Akros interroga Armand travestito da Roland, senza ottenere chiarimenti.</li><li>Alina porta del cibo a Bastien, difende Armand e invita gli avventurieri alla fattoria Bellier per la notte successiva.</li><li>La compagnia entra per la prima volta alle Due Lanterne e ne esamina l’inventario, senza avere ancora acquistato nulla.</li></ul></section>
         <h2 class="section-title rule-title">Questioni ancora aperte</h2><ul><li>Chi è il responsabile degli attacchi al bestiame?</li><li>Che cosa è realmente accaduto a Derrick e Bastien quella notte?</li><li>Perché Armand Corbet ha acquistato tante catene?</li><li>Che cosa sa Alina e perché ha chiesto di non fare del male ad Armand?</li><li>Che cosa accadrà alla vecchia fattoria Bellier?</li></ul>
         <h2 class="section-title rule-title">Da approfondire</h2><div class="related"><a href="#/luoghi/ebavurage">Ebavurage ↗</a><a href="#/personaggi/roland-veyrac">Roland Veyrac ↗</a><a href="#/personaggi/alina-veyrac">Alina Veyrac ↗</a><a href="#/personaggi/armand-corbet">Armand Corbet ↗</a><a href="#/personaggi/bastien">Bastien ↗</a><a href="#/personaggi/mireille-duret">Mireille Duret ↗</a><a href="#/luoghi/cervo-soporoso">Cervo Soporoso ↗</a><a href="#/luoghi/prato-delle-fiere">Prato delle Fiere ↗</a><a href="#/luoghi/due-lanterne">Le Due Lanterne ↗</a><a href="#/luoghi/fattoria-bellier">Fattoria Bellier ↗</a></div>
-        </article><nav class="toc" aria-label="In questo capitolo"><strong>In questo capitolo</strong>${ch9Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</nav></div>
+        </article><details class="toc" aria-label="Indice del capitolo" open><summary>In questo capitolo</summary><div class="toc-links">${ch9Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</div></details></div>
         <div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
     }
     if(slug==="gola"){
@@ -149,7 +149,7 @@
         <div class="article-layout"><article class="article-body">${sectionsHtml}
         <section class="summary-box" aria-label="Riepilogo del capitolo"><h3>Il capitolo in breve</h3><ul><li>La compagnia lascia Roncenoir insieme a Giotis, diretta verso Heliara.</li><li>Durante il viaggio abbatte due orsogufi e trascorre la notte in una Gola facilmente difendibile.</li><li>Il mattino seguente Magistro Mercer Berus, affiancato da due guardie, pretende la pagina recuperata a Obsydra.</li><li>La compagnia sconfigge le guardie e ferisce gravemente Mercer, che subisce una trasformazione demoniaca spontanea.</li><li>Gli avventurieri abbattono il Magistro e recuperano una lettera sul recupero della pagina e sul coinvolgimento di Cato Mirel.</li><li>Dopo aver seppellito i caduti per nascondere le tracce dello scontro, il gruppo riprende il viaggio verso Heliara.</li></ul></section>
         <h2 class="section-title rule-title">Da approfondire</h2><div class="related"><a href="#/personaggi/mercer-berus">Mercer Berus ↗</a><a href="#/luoghi/gola-mercers">La Gola ↗</a><a href="#/personaggi/giotis-pana">Giotis Pana ↗</a><a href="#/scoperte/lettera-mercer">Lettera di Mercer ↗</a><a href="#/personaggi/cato-mirel">Cato Mirel ↗</a></div>
-        </article><nav class="toc" aria-label="In questo capitolo"><strong>In questo capitolo</strong>${ch8Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</nav></div>
+        </article><details class="toc" aria-label="Indice del capitolo" open><summary>In questo capitolo</summary><div class="toc-links">${ch8Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</div></details></div>
         <div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
     }
     if(slug==="roncenoir"){
@@ -160,7 +160,7 @@
         <div class="article-layout"><article class="article-body">${sectionsHtml}
         <section class="summary-box" aria-label="Riepilogo del capitolo"><h3>Il capitolo in breve</h3><ul><li>La compagnia raggiunge Roncenoir, insediamento in profonda simbiosi con la foresta.</li><li>Giotis Pana, antico mentore di Sefra, accetta di studiare una delle due pagine misteriose.</li><li>Lethraën racconta dell’arrivo dell’Abisso, della Grande Piaga e del genocidio dei kenku rifugiatisi in Nemorae; chiede perdono a Brann.</li><li>Alle Acque Profonde gli avventurieri abbattono le Grandi Fauci e altri due coccodrilli.</li><li>Lethraën consegna la Caraffa dell’Acqua Eterna come ricompensa.</li><li>Giotis confronta anche la seconda pagina e propone di cercare risposte nella biblioteca di Heliara.</li><li>Dopo una notte a Roncenoir, gli avventurieri ripartono con Giotis verso la capitale.</li></ul></section>
         <h2 class="section-title rule-title">Da approfondire</h2><div class="related"><a href="#/luoghi/roncenoir">Roncenoir ↗</a><a href="#/personaggi/giotis-pana">Giotis Pana ↗</a><a href="#/personaggi/lethraen">Lethraën ↗</a><a href="#/luoghi/acque-profonde">Acque Profonde ↗</a><a href="#/scoperte/grande-piaga">Grande Piaga ↗</a><a href="#/scoperte/grandi-fauci">Le Grandi Fauci ↗</a><a href="#/scoperte/caraffa-acqua-eterna">Caraffa dell’Acqua Eterna ↗</a></div>
-        </article><nav class="toc" aria-label="In questo capitolo"><strong>In questo capitolo</strong>${ch7Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</nav></div>
+        </article><details class="toc" aria-label="Indice del capitolo" open><summary>In questo capitolo</summary><div class="toc-links">${ch7Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</div></details></div>
         <div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
     }
     if(slug==="paludi"){
@@ -171,7 +171,7 @@
         <div class="article-layout"><article class="article-body">${sectionsHtml}
         <section class="summary-box" aria-label="Riepilogo del capitolo"><h3>Il capitolo in breve</h3><ul><li>La compagnia lascia Obsydra, ripassa da Brugheroccia e imbocca i canyons del Surturheim verso Nemorae.</li><li>Durante il viaggio sconfigge rapidamente una banda di goblin guidata da due capi.</li><li>Akros guida il gruppo attraverso le paludi settentrionali di Nemorae.</li><li>Davanti a un ponticello gli avventurieri incontrano una banda di grung dalla pelle colorata guidata da don Batraci.</li><li>Derrick accetta il baciamano imposto dal capobanda, ma la trattativa fallisce quando Akros tenta di nascondersi.</li><li>La compagnia sconfigge i seguaci di don Batraci; il capo fugge nel Lirion promettendo vendetta.</li><li>Gli avventurieri recuperano un Anello del Saltare e raggiungono le soglie di Roncenoir.</li></ul></section>
         <h2 class="section-title rule-title">Da approfondire</h2><div class="related"><a href="#/personaggi/don-batraci">don Batraci ↗</a><a href="#/luoghi/paludi-settentrionali">Paludi settentrionali di Nemorae ↗</a><a href="#/luoghi/ponticello-grung">Il ponticello dei grung ↗</a><a href="#/luoghi/brugheroccia">Brugheroccia ↗</a><a href="#/scoperte/anello-saltare">Anello del Saltare ↗</a></div>
-        </article><nav class="toc" aria-label="In questo capitolo"><strong>In questo capitolo</strong>${ch6Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</nav></div>
+        </article><details class="toc" aria-label="Indice del capitolo" open><summary>In questo capitolo</summary><div class="toc-links">${ch6Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</div></details></div>
         <div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
     }
     if(slug==="obsydra"){
@@ -182,7 +182,7 @@
         <div class="article-layout"><article class="article-body">${sectionsHtml}
         <section class="summary-box" aria-label="Riepilogo del capitolo"><h3>Il capitolo in breve</h3><ul><li>La compagnia raggiunge Obsydra, grande città mineraria e industriale del Surturheim.</li><li>Baldur affronta Bram Ferrovena in una gara di bevute e ottiene la fiducia dei minatori.</li><li>Le indagini alla Biblioteca Olivetti e presso i Voss conducono alla Cava.</li><li>Gli avventurieri trovano Teren e sconfiggono il Vecchio Paladino Oscuro, che riconosce Derrick e pronuncia il nome di Aurel.</li><li>Mira consegna una seconda pagina, simile a quella di Brann.</li><li>Sefra consiglia Giotis Pana a Roncenoir; la compagnia non torna a fare rapporto a Cato.</li><li>Orgen rimane a Obsydra, mentre gli altri cinque riprendono il viaggio.</li></ul></section>
         <h2 class="section-title rule-title">Da approfondire</h2><div class="related"><a href="#/luoghi/obsydra">Obsydra ↗</a><a href="#/luoghi/cava-obsydra">La Cava ↗</a><a href="#/personaggi/teren-voss">Teren Voss ↗</a><a href="#/personaggi/mira-voss">Mira Voss ↗</a><a href="#/personaggi/sefra-tre-dita">Sefra «Tre-Dita» ↗</a><a href="#/personaggi/paladino-oscuro">Paladino Oscuro ↗</a><a href="#/scoperte/pagina-obsydra">Seconda pagina ↗</a><a href="#/scoperte/spada-giuramento">Spada del Giuramento ↗</a></div>
-        </article><nav class="toc" aria-label="In questo capitolo"><strong>In questo capitolo</strong>${ch5Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</nav></div>
+        </article><details class="toc" aria-label="Indice del capitolo" open><summary>In questo capitolo</summary><div class="toc-links">${ch5Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</div></details></div>
         <div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
     }
     if(slug==="brugheroccia"){
@@ -193,7 +193,7 @@
         <div class="article-layout"><article class="article-body">${sectionsHtml}
         <section class="summary-box" aria-label="Riepilogo del capitolo"><h3>Il capitolo in breve</h3><ul><li>Alcuni minatori chiedono alla compagnia di soccorrere un compagno rimasto nella miniera.</li><li>Gli avventurieri aggirano un crollo e sconfiggono alcuni Mephit di terra.</li><li>Trovano il minatore ucciso e affrontano un Babau, che riescono ad abbattere.</li><li>Il Crucitti li ricompensa con oro, vitto e alloggio.</li><li>Il Crucitti riferisce del riavvicinamento tra Obsydra e Pyrocladion, che attribuisce all'influenza del Culto del Fuoco.</li></ul></section>
         <h2 class="section-title rule-title">Da approfondire</h2><div class="related"><a href="#/luoghi/brugheroccia">Brugheroccia ↗</a><a href="#/luoghi/miniera-brugheroccia">La miniera ↗</a><a href="#/personaggi/crucitti">Il Crucitti ↗</a><a href="#/scoperte/babau-brugheroccia">Il Babau ↗</a><a href="#/scoperte/culto-fuoco">Il Culto del Fuoco ↗</a></div>
-        </article><nav class="toc" aria-label="In questo capitolo"><strong>In questo capitolo</strong>${ch4Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</nav></div>
+        </article><details class="toc" aria-label="Indice del capitolo" open><summary>In questo capitolo</summary><div class="toc-links">${ch4Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</div></details></div>
         <div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
     }
     if(slug==="lantrelle"){
@@ -204,7 +204,7 @@
         <div class="article-layout"><article class="article-body">${sectionsHtml}
         <section class="summary-box" aria-label="Riepilogo del capitolo"><h3>Il capitolo in breve</h3><ul><li>Tomato tenta di mentire a Selese, ma l'armatura indossata da Derrick tradisce la compagnia.</li><li>Cato ipotizza che Selese potesse trarre vantaggio dalla morte dei reietti o di due ufficiali da lei giudicati «impuri».</li><li>Selese non insiste; Cato affida alla compagnia il recupero di una pagina a Obsydra.</li><li>Gli avventurieri visitano l'Emporio del Brambilla e acquistano generi vari.</li></ul></section>
         <h2 class="section-title rule-title">Da approfondire</h2><div class="related"><a href="#/personaggi/selese-arco">Selese Arco ↗</a><a href="#/personaggi/cato-mirel">Cato Mirel ↗</a><a href="#/personaggi/brambilla">Il Brambilla ↗</a><a href="#/luoghi/lantrelle">Lantrelle ↗</a><a href="#/luoghi/emporio-brambilla">Emporio del Brambilla ↗</a><a href="#/scoperte/pagina-obsydra">La pagina di Obsydra ↗</a></div>
-        </article><nav class="toc" aria-label="In questo capitolo"><strong>In questo capitolo</strong>${ch3Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</nav></div>
+        </article><details class="toc" aria-label="Indice del capitolo" open><summary>In questo capitolo</summary><div class="toc-links">${ch3Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</div></details></div>
         <div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
     }
     if(slug==="reietti"){
@@ -215,7 +215,7 @@
         <div class="article-layout"><article class="article-body">${sectionsHtml}
         <section class="summary-box" aria-label="Riepilogo del capitolo"><h3>Il capitolo in breve</h3><ul><li>Selese Arco ordina di eliminare un accampamento di nomadi accusati di tradimento.</li><li>La compagnia salva Nero da un androsfinge e riceve quattro anelli magici.</li><li>Il bambino Arel conduce gli avventurieri all’accampamento, dove Brannor li ospita.</li><li>Uomini della Chiesa assaltano il campo e uccidono Arel; gli avventurieri difendono i reietti.</li><li>Brannor riferisce della ricerca segreta di un antico diario da parte della Chiesa.</li></ul></section>
         <h2 class="section-title rule-title">Da approfondire</h2><div class="related"><a href="#/personaggi/selese-arco">Selese Arco ↗</a><a href="#/personaggi/nero">Nero ↗</a><a href="#/personaggi/arel">Arel ↗</a><a href="#/personaggi/brannor">Brannor ↗</a><a href="#/luoghi/accampamento-reietti">Accampamento dei reietti ↗</a><a href="#/scoperte/antico-diario">L’antico diario ↗</a></div>
-        </article><nav class="toc" aria-label="In questo capitolo"><strong>In questo capitolo</strong>${ch2Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</nav></div>
+        </article><details class="toc" aria-label="Indice del capitolo" open><summary>In questo capitolo</summary><div class="toc-links">${ch2Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</div></details></div>
         <div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
     }
     if(slug!=="manna")return renderNotFound();
@@ -226,22 +226,49 @@
       <div class="article-layout"><article class="article-body">${sectionsHtml}
       <section class="summary-box" aria-label="Riepilogo del capitolo"><h3>Il capitolo in breve</h3><ul><li>La compagnia si forma a Manna, tra una rissa e un incontro con un branco di lupi.</li><li>Il Margravio incarica gli avventurieri di fermare Lilith-Zetto.</li><li>Il vecchio della foresta li aiuta e Brann sottrae una misteriosa pagina.</li><li>Lilith-Zetto viene sconfitta, ma la bambina rapita non può essere salvata.</li></ul></section>
       <h2 class="section-title rule-title">Da approfondire</h2><div class="related"><a href="#/scoperte/prima-pagina">La prima pagina ↗</a><a href="#/personaggi/vecchio">Il vecchio della foresta ↗</a><a href="#/personaggi/lilith-zetto">Lilith-Zetto ↗</a><a href="#/luoghi/manna">Manna ↗</a></div>
-      </article><nav class="toc" aria-label="In questo capitolo"><strong>In questo capitolo</strong>${ch1Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</nav></div>
+      </article><details class="toc" aria-label="Indice del capitolo" open><summary>In questo capitolo</summary><div class="toc-links">${ch1Sections.map(x=>`<a href="#${x.id}" data-toc="${x.id}">${esc(x.title)}</a>`).join("")}</div></details></div>
       <div class="ornament" aria-hidden="true">✦ ⟡ ✦</div>`);
   }
   // Miniature ottimizzate dei soli ritratti gia pubblicati; altre immagini usano il file originale.
   const portraitThumbSlugs = new Set(["nero", "wilhelm-codroipo", "brambilla", "crucitti", "alina-veyrac", "armand-corbet", "cato-mirel", "don-batraci", "giotis-pana", "lethraen", "mercer-berus", "mira-voss", "paladino-oscuro", "roland-veyrac", "sefra-tre-dita", "selese-arco"]);
+  // Categorie editoriali dell'Atlante. Le voci future vanno classificate qui:
+  // nessun territorio o luogo narrativo viene assegnato in base a supposizioni.
+  const atlasGroups = [
+    {id:"insediamenti",label:"Città e villaggi",short:"Insediamenti",slugs:["manna","lantrelle","brugheroccia","obsydra","roncenoir","ebavurage","pyrocladion","heliara","talvaris","sargona","nurashad","ishkar"]},
+    {id:"territori",label:"Stati e regioni",short:"Stati e regioni",slugs:["foreste-nemorae","paludi-settentrionali","surturheim","regno-aurelia","repubblica-velmora","sultanato-ashamir","deserto-sevrath"]},
+    {id:"interesse",label:"Luoghi d'interesse",short:"Luoghi d'interesse",slugs:["cervo-sonnacchioso","baracca","antro-megera","accampamento-reietti","emporio-brambilla","miniera-brugheroccia","lirion","ponticello-grung","varco-scoria","cervo-dormiveglia","locanda-vapore","biblioteca-olivetti","miniere-obsydra","cava-obsydra","acque-profonde","gola-mercers","cervo-soporoso","prato-delle-fiere","due-lanterne","fattoria-bellier"]}
+  ];
+  const atlasGroupBySlug = new Map(atlasGroups.flatMap(g=>g.slugs.map(slug=>[slug,g.id])));
+  // Le nuove voci restano visibili tra i luoghi d’interesse finché non vengono classificate.
+  const atlasGroupFor = item => atlasGroupBySlug.get(item.slug) || "interesse";
+  function collectionCard(s,x) {
+    const copy=`<div class="eyebrow">${esc(x.role||x.type)}</div><h3>${esc(x.name)}</h3><p>${esc(x.intro)}</p><div class="arrow">Apri la scheda →</div>`;
+    if(s.collection!=="people")return `<a class="entry-card" href="${linkFor(s,x)}">${copy}</a>`;
+    const thumb=x.image?(portraitThumbSlugs.has(x.slug)?x.image.replace(/\.png$/,"-thumb.webp"):x.image):null;
+    const visual=thumb?`<span class="person-thumb"><img src="${esc(thumb)}" alt="" loading="lazy" decoding="async" width="96" height="124"></span>`:`<span class="person-thumb person-thumb-empty" aria-hidden="true">♙</span>`;
+    return `<a class="entry-card entry-card-person" href="${linkFor(s,x)}"><div class="person-card-layout">${visual}<div class="person-card-copy">${copy}</div></div></a>`;
+  }
+  function atlasCards(filter) {
+    const s=sections.find(x=>x.collection==="places");
+    const groups=filter==="all"?atlasGroups:atlasGroups.filter(g=>g.id===filter);
+    return groups.map(g=>{
+      const entries=data.places.filter(x=>atlasGroupFor(x)===g.id).sort((a,b)=>a.name.localeCompare(b.name,"it"));
+      return `<section class="atlas-category" aria-label="${esc(g.label)}"><div class="atlas-category-heading"><h2>${esc(g.label)}</h2><span>${entries.length} ${entries.length===1?'voce':'voci'}</span></div><div class="card-grid">${entries.map(x=>collectionCard(s,x)).join("")}</div></section>`;
+    }).join("");
+  }
   function renderCollection(s) {
     const items=data[s.collection];
     const mapIntro = s.collection === "places" ? `<a class="atlas-map-teaser" href="#/mappa"><img src="assets/mappa-thespira.jpg" alt="Mappa illustrata di Thespira, con regioni e città" loading="lazy"><span><small>Cartografia</small><strong>La mappa di Thespira</strong><em>Apri la carta geografica, ingrandisci e spostati per esplorare i dettagli.</em><b>Consulta la mappa →</b></span></a>` : "";
+    if(s.collection==="places") {
+      const groupFilters=atlasGroups.map(g=>`<button type="button" data-atlas-filter="${g.id}" aria-pressed="${g.id==="insediamenti"}">${esc(g.short)} <span>${items.filter(x=>atlasGroupFor(x)===g.id).length}</span></button>`).join("");
+      return page(`${breadcrumb({label:s.title})}${title("L'enciclopedia",s.title,`${items.length} luoghi documentati. Esplora gli insediamenti, gli Stati e le regioni oppure i luoghi d'interesse noti alla compagnia.`)}
+        ${mapIntro}
+        <div class="atlas-filter" role="group" aria-label="Categorie dell'Atlante"><span class="atlas-filter-kicker">Sfoglia per categoria</span><div class="atlas-filter-options">${groupFilters}<button type="button" data-atlas-filter="all" aria-pressed="false">Tutte <span>${items.length}</span></button></div></div>
+        <div class="atlas-results" id="atlas-results" aria-live="polite">${atlasCards("insediamenti")}</div>
+        <p class="info-banner">Le voci dell'Atlante comprendono sia località visitate sia informazioni geografiche già conosciute dalla compagnia. <a href="#/mappa">Esplora la mappa interattiva ↗</a></p>`);
+    }
     return page(`${breadcrumb({label:s.title})}${title("L'enciclopedia",s.title,`${items.length} ${s.plural} già documentati. Le voci sono aggiornate soltanto con informazioni conosciute dalla compagnia.`)}
-      ${mapIntro}<div class="card-grid${s.collection==="people"?" card-grid-people":""}">${items.map(x=>{
-        const copy=`<div class="eyebrow">${esc(x.role||x.type)}</div><h3>${esc(x.name)}</h3><p>${esc(x.intro)}</p><div class="arrow">Apri la scheda →</div>`;
-        if(s.collection!=="people")return `<a class="entry-card" href="${linkFor(s,x)}">${copy}</a>`;
-        const thumb=x.image?(portraitThumbSlugs.has(x.slug)?x.image.replace(/\.png$/,"-thumb.webp"):x.image):null;
-        const visual=thumb?`<span class="person-thumb"><img src="${esc(thumb)}" alt="" loading="lazy" decoding="async" width="96" height="124"></span>`:`<span class="person-thumb person-thumb-empty" aria-hidden="true">♙</span>`;
-        return `<a class="entry-card entry-card-person" href="${linkFor(s,x)}"><div class="person-card-layout">${visual}<div class="person-card-copy">${copy}</div></div></a>`;
-      }).join("")}</div>
+      <div class="card-grid${s.collection==="people"?" card-grid-people":""}">${items.map(x=>collectionCard(s,x)).join("")}</div>
       <p class="info-banner">I ritratti illustrati accompagnano le voci già documentate. Puoi sfogliare le tavole complete dei personaggi nell’<a href="#/artbook">Artbook di Thespira</a>.</p>`);
   }
   function renderEntry(s,slug) {
@@ -299,6 +326,8 @@
     else if(route==="/cronologia/ebavurage")html=renderChapter("ebavurage");
     else {const seg=route.split("/").filter(Boolean);const section=sections.find(x=>x.path===seg[0]);html=section?(seg.length===1?renderCollection(section):seg.length===2?renderEntry(section,seg[1]):renderNotFound()):renderNotFound();}
     main.innerHTML=html;
+    const chapterToc=main.querySelector("details.toc");
+    if(chapterToc)chapterToc.open=!window.matchMedia("(max-width: 760px)").matches;
     if (route === "/mappa") destroyMapViewer = initThespiraMap(main);
     if (route === "/artbook") initThespiraArtbook(main);
     const navActive=route==="/"?"#/":route.startsWith("/cronologia/")?`#${route}`:"#/"+(route.split("/")[1]||"");
@@ -319,8 +348,31 @@
   ];}
   function showSearch() {backdrop.hidden=false;searchInput.value="";showResults("");searchInput.focus();document.body.style.overflow="hidden";}
   function hideSearch() {backdrop.hidden=true;document.body.style.overflow="";document.getElementById("search-toggle").focus();}
-  function showResults(query) {const term=query.trim().toLocaleLowerCase("it");const matches=allSearchEntries().filter(x=>!term||(x.name+" "+x.type+" "+x.description+" "+(x.extra||"")).toLocaleLowerCase("it").includes(term));
-    searchResults.innerHTML=matches.length?matches.slice(0,20).map(x=>`<a class="search-result-link" href="${x.href}"><strong>${esc(x.name)}</strong><small>${esc(x.type)} · ${esc(x.description)}</small></a>`).join(""):`<p class="empty-note">Nessuna voce pubblicata corrisponde alla ricerca.</p>`;
+  const normalizeSearch = value => String(value||"").toLocaleLowerCase("it").normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"").replace(/æ/g,"ae").replace(/œ/g,"oe")
+    .replace(/[^a-z0-9]+/g," ").trim();
+  function searchScore(entry,term,words) {
+    const name=normalizeSearch(entry.name), type=normalizeSearch(entry.type);
+    const description=normalizeSearch(entry.description),extra=normalizeSearch(entry.extra);
+    const all=[name,type,description,extra].join(" ");
+    if (!words.every(word=>all.includes(word))) return -1;
+    if (name===term) return 1000;
+    if (name.startsWith(term)) return 850;
+    if (name.includes(term)) return 700;
+    if (words.every(word=>name.split(" ").some(token=>token.startsWith(word)))) return 550;
+    if (type.includes(term)) return 280;
+    if (description.includes(term)) return 140;
+    if (extra.includes(term)) return 70;
+    return 20;
+  }
+  function showResults(query) {
+    const term=normalizeSearch(query);
+    const words=term.split(" ").filter(Boolean);
+    const matches=allSearchEntries().map((entry,index)=>({entry,index,score:term?searchScore(entry,term,words):0}))
+      .filter(x=>x.score>=0)
+      .sort((a,b)=>b.score-a.score || a.index-b.index)
+      .slice(0,20);
+    searchResults.innerHTML=matches.length?matches.map(({entry:x})=>`<a class="search-result-link" href="${x.href}"><strong>${esc(x.name)}</strong><small>${esc(x.type)} · ${esc(x.description)}</small></a>`).join(""):`<p class="empty-note">Nessuna voce pubblicata corrisponde alla ricerca.</p>`;
   }
   document.getElementById("search-toggle").addEventListener("click",showSearch);
   document.getElementById("search-close").addEventListener("click",hideSearch);
@@ -331,9 +383,27 @@
     if(e.key==="Escape"){if(!backdrop.hidden)hideSearch();else closeMenu();}
     else if(e.key==="/"&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)){e.preventDefault();if(backdrop.hidden)showSearch();}
   });
+  window.matchMedia("(max-width: 760px)").addEventListener("change", e=>{
+    const toc=main.querySelector("details.toc");if(toc)toc.open=!e.matches;
+  });
+  main.addEventListener("click", e=>{
+    const btn=e.target.closest("[data-atlas-filter]");
+    if(!btn)return;
+    const filter=btn.dataset.atlasFilter;
+    if(filter!=="all"&&!atlasGroups.some(g=>g.id===filter))return;
+    const target=main.querySelector("#atlas-results");
+    if(!target)return;
+    main.querySelectorAll("[data-atlas-filter]").forEach(b=>b.setAttribute("aria-pressed",String(b===btn)));
+    target.innerHTML=atlasCards(filter);
+  });
   // Hash-based route avoids server rewrites and works on GitHub project Pages.
   window.addEventListener("hashchange",()=>{navigate();window.scrollTo({top:0,behavior:"instant"});});
   // TOC uses a normal fragment inside the hash route: '#/cronologia/manna#la-rissa'.
-  main.addEventListener("click",e=>{const el=e.target.closest("[data-toc]");if(el){e.preventDefault();const target=document.getElementById(el.dataset.toc);if(target)target.scrollIntoView({behavior:"smooth",block:"start"});}});
+  main.addEventListener("click",e=>{const el=e.target.closest("[data-toc]");if(el){
+    e.preventDefault();const target=document.getElementById(el.dataset.toc);
+    const toc=main.querySelector("details.toc");
+    if(toc && window.matchMedia("(max-width: 760px)").matches)toc.open=false;
+    if(target)requestAnimationFrame(()=>target.scrollIntoView({behavior:"smooth",block:"start"}));
+  }});
   navigate();
 })();

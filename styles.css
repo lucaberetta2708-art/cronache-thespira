@@ -183,3 +183,27 @@ body.map-fullscreen{overflow:hidden}
 .home-current-panel p{margin:7px 0 9px}
 .home-current-panel p:last-child{margin-bottom:0}
 @media(max-width:640px){.home-current-panel{padding:18px 19px}}
+
+
+/* Atlante enciclopedico: gruppi espliciti di luoghi, selezionabili senza una pagina interminabile. */
+.atlas-filter{border:1px solid #d6c5a8;background:#f7f0e1;border-radius:7px;padding:16px 18px;margin:0 0 22px}
+.atlas-filter-kicker{display:block;margin-bottom:11px;font:700 11px system-ui,sans-serif;letter-spacing:1.35px;text-transform:uppercase;color:#806744}
+.atlas-filter-options{display:flex;flex-wrap:wrap;gap:8px}
+.atlas-filter-options button{border:1px solid #c8b590;border-radius:5px;background:#fffbf3;color:#534734;font:600 12px system-ui,sans-serif;min-height:41px;padding:10px 13px;cursor:pointer}
+.atlas-filter-options button span{display:inline-block;font-size:11px;color:#907d5f;margin-left:4px}
+.atlas-filter-options button[aria-pressed="true"]{background:#2e493b;border-color:#2e493b;color:#fff1d6}
+.atlas-filter-options button[aria-pressed="true"] span{color:#d5c4a1}
+.atlas-filter-options button:focus-visible{outline:3px solid #b88736;outline-offset:2px}
+.atlas-category{margin:0 0 31px}
+.atlas-category-heading{display:flex;align-items:baseline;gap:15px;border-bottom:1px solid #d3c3a8;margin:17px 0 18px;padding-bottom:9px}
+.atlas-category-heading h2{font-weight:500;font-size:25px;margin:0}
+.atlas-category-heading span{font:12px system-ui,sans-serif;color:#86765d;white-space:nowrap}
+/* Indici capitolo: riquadro aperto su desktop, comprimibile e inizialmente chiuso su mobile. */
+.toc summary{font:700 12px system-ui,sans-serif;text-transform:uppercase;letter-spacing:1.2px;color:#846942;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.toc summary::-webkit-details-marker{display:none}
+.toc summary::after{content:"⌄";font:22px Georgia,serif;line-height:1;transition:transform .16s ease}
+.toc[open] summary::after{transform:rotate(180deg)}
+.toc summary:focus-visible{outline:3px solid #b88736;outline-offset:3px;border-radius:3px}
+.toc .toc-links{margin-top:11px}
+@media(min-width:761px){.toc summary{cursor:default}.toc summary::after{display:none}}
+@media(max-width:760px){.toc{padding:15px 17px}.toc .toc-links{margin-top:12px;border-top:1px solid #d6c7ad;padding-top:8px}.toc a{padding:4px 0;min-height:28px}.atlas-filter{padding:13px}.atlas-filter-options{gap:6px}.atlas-filter-options button{padding:9px 11px;font-size:11px}.atlas-category-heading h2{font-size:22px}}
