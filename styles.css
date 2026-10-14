@@ -165,3 +165,21 @@ body.map-fullscreen{overflow:hidden}
 .map-viewport.map-labels-visible .map-pin:not([hidden]) .map-pin-tooltip{visibility:visible;opacity:1}
 .map-viewport.map-labels-visible .map-pin-tooltip{font-size:12px;background:#20372feF;border-color:#e7c88e}
 .map-viewport.map-labels-visible .map-pin[aria-pressed="true"] .map-pin-tooltip{background:#ad6e24;color:#fff}
+
+/* Barra laterale compatta: cronologia espandibile senza perdere il link all'indice. */
+.chapter-nav-heading{display:flex;align-items:stretch;gap:4px;margin-bottom:4px}
+.chapter-nav-heading>.nav-link{flex:1;min-width:0;margin-bottom:0}
+.chapter-nav-toggle{flex:0 0 37px;display:grid;place-items:center;border:1px solid #d5c8b2;border-radius:5px;background:#f1e8d8;color:#66583f;min-height:42px;transition:background-color .15s ease}
+.chapter-nav-toggle:hover{background:#ded3be;color:#2c3d33}
+.chapter-nav-toggle span{font:25px/1 Georgia,serif;display:block;transform:translateY(-3px);transition:transform .18s ease}
+.chapter-nav-toggle[aria-expanded="true"] span{transform:translateY(1px) rotate(180deg)}
+.chapter-nav-toggle:focus-visible{outline:3px solid #b88a3e;outline-offset:2px}
+.chapter-nav-list[hidden]{display:none!important}
+.chapter-nav-list{margin:3px 0 8px 0;padding:5px 0 5px 0;border-left:1px solid #cdbb9e}
+.chapter-nav-list .nav-link.sublink{padding:8px 8px 8px 25px;margin:0 0 2px 0;line-height:1.5}
+/* L'ultimo luogo noto occupa da solo la fascia informativa della home. */
+.home-current-panel{margin-bottom:28px;padding:21px 25px}
+.home-current-panel .location-now{margin:6px 0 8px}
+.home-current-panel p{margin:7px 0 9px}
+.home-current-panel p:last-child{margin-bottom:0}
+@media(max-width:640px){.home-current-panel{padding:18px 19px}}

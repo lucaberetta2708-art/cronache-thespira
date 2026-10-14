@@ -6,7 +6,15 @@
   const main = document.getElementById("main-content");
   const menu = document.getElementById("menu-toggle");
   const sidebar = document.getElementById("sidebar");
+  const chapterToggle = document.getElementById("chapter-nav-toggle");
+  const chapterList = document.getElementById("chapter-nav-list");
   const shade = document.getElementById("mobile-shade");
+  function setChapterListOpen(open) {
+    chapterList.hidden = !open;
+    chapterToggle.setAttribute("aria-expanded", String(open));
+    chapterToggle.setAttribute("aria-label", open ? "Nascondi i capitoli" : "Mostra i capitoli");
+  }
+  chapterToggle.addEventListener("click", () => setChapterListOpen(chapterList.hidden));
   const backdrop = document.getElementById("search-backdrop");
   const searchInput = document.getElementById("search-input");
   const searchResults = document.getElementById("search-results");
@@ -29,10 +37,7 @@
   function renderHome() {
     const count=data.chapters.filter(x=>x.published).length;
     return page(`<div class="hero hero-morien"><img src="assets/morien-cover.png" alt="Morien, il Giullare Nero, tra rovine e frammenti di realtà spezzata"><div class="hero-content"><div class="hero-label">Atlante e memorie di viaggio</div><h1>Le Cronache<br>di Thespira</h1><p>Luoghi, personaggi e avvenimenti di una compagnia la cui storia è ancora in corso.</p></div></div>
-      <div class="feature-grid">
-        <section class="panel"><div class="note">Da dove tutto ebbe inizio</div><h2>Capitolo I · Manna e Lilith-Zetto</h2><p>Una rissa in locanda, un furto maldestro e un'antica foresta: il primo incontro della compagnia e una pagina destinata a restare un mistero.</p><a class="button-link" href="#/cronologia/manna">Leggi il capitolo <span>→</span></a></section>
-        <section class="panel"><div class="note">Ultima situazione nota</div><h2 class="location-now">${esc(data.current.place)}</h2><p>${esc(data.current.subtitle)}</p><p class="subtle">${esc(data.current.next)}</p></section>
-      </div>
+      <section class="panel home-current-panel"><div class="note">Ultima situazione nota</div><h2 class="location-now">${esc(data.current.place)}</h2><p>${esc(data.current.subtitle)}</p><p class="subtle">${esc(data.current.next)}</p></section>
       <h2 class="section-title rule-title">Esplora l'archivio</h2>
       <div class="tile-grid"><a class="topic-card" href="#/cronologia"><span class="topic-icon">☷</span><strong>Cronologia</strong><small>${data.chapters.length} archi narrativi · ${count} ${count===1?"pubblicato":"pubblicati"}</small></a>${sections.map(s=>`<a class="topic-card" href="#/${s.path}"><span class="topic-icon">${s.icon}</span><strong>${esc(s.title)}</strong><small>${esc(s.caption)}</small></a>`).join("")}</div>
       <div class="home-map-feature"><img src="assets/mappa-thespira.jpg" alt="Estratto dalla mappa del continente insulare di Thespira" loading="lazy"><div><span class="note">Cartografia del continente</span><h2>La mappa di Thespira</h2><p>Consulta la carta, esplora le regioni e ingrandisci i dettagli direttamente dal browser.</p><a class="button-link" href="#/mappa">Apri la mappa <span>→</span></a></div></div>
@@ -298,6 +303,8 @@
     if (route === "/artbook") initThespiraArtbook(main);
     const navActive=route==="/"?"#/":route.startsWith("/cronologia/")?`#${route}`:"#/"+(route.split("/")[1]||"");
     document.querySelectorAll("[data-nav]").forEach(x=>x.classList.toggle("active",x.getAttribute("href")===navActive));
+    // Evidenzia anche la voce principale quando il capitolo attivo è in un elenco chiuso.
+    sidebar.querySelector('a[href="#/cronologia"]').classList.toggle("active", route==="/cronologia" || route.startsWith("/cronologia/"));
     document.title=(route==="/"?"Cronache di Thespira":(main.querySelector("h1")?.textContent||"Cronache")+" — Cronache di Thespira");
     if (!route.includes("/cronologia/manna")) window.scrollTo(0,0);
     closeMenu();
