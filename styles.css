@@ -107,3 +107,55 @@ body.map-fullscreen{overflow:hidden}
 /* Nuove località approvate, con collocazione geografica orientativa. */
 .map-pin-approximate{background:#85512b;border-style:dashed;border-color:#fff1c8}
 .map-position-note{font:italic 12px/1.45 system-ui,sans-serif!important;color:#826e52!important;border-top:1px solid #dfd0b5;padding-top:9px;margin-top:11px!important}
+
+
+/* ATLANTE INTERATTIVO — ITINERARIO DELLA COMPAGNIA (FASE II) */
+.map-journey-panel{padding:15px 17px 12px;background:linear-gradient(120deg,#fdf8ed,#eee5d2);border-bottom:1px solid #d2c09c;color:#322f27}
+.map-journey-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.map-journey-heading>div{display:flex;flex-direction:column;gap:3px}
+.map-journey-kicker{font:700 10px system-ui,sans-serif;text-transform:uppercase;letter-spacing:1.6px;color:#8a6c3f}
+.map-journey-heading strong{font:500 21px Georgia,serif;color:#273b30}
+.map-journey-check{display:inline-flex;align-items:center;gap:7px;font:600 12px system-ui,sans-serif;white-space:nowrap;cursor:pointer}
+.map-journey-check input{accent-color:#315342;width:16px;height:16px}
+.map-journey-navigation{display:flex;align-items:stretch;gap:8px;margin-top:12px}
+.map-journey-navigation label{display:flex;align-items:center;gap:9px;flex:1;min-width:0;font:700 12px system-ui,sans-serif;color:#685742}
+.map-journey-navigation select{width:100%;min-width:0;max-width:490px;min-height:42px;padding:9px 13px;border:1px solid #c2ae8a;border-radius:5px;background:#fffcf5;color:#343027;font:600 13px system-ui,sans-serif}
+.map-journey-navigation>button{width:44px;min-width:44px;border:1px solid #ab946d;border-radius:5px;background:#294839;color:#fff0d5;font-size:20px;cursor:pointer}
+.map-journey-navigation>button:disabled{opacity:.35;cursor:not-allowed}
+.map-journey-bottom{display:flex;align-items:center;gap:12px;justify-content:space-between;flex-wrap:wrap;margin-top:11px}
+.map-journey-scope{display:inline-flex;border:1px solid #c7b695;border-radius:6px;overflow:hidden}
+.map-journey-scope button{border:0;border-right:1px solid #c7b695;background:#fff9ed;color:#554a36;padding:8px 12px;min-height:35px;font:600 12px system-ui,sans-serif;cursor:pointer}
+.map-journey-scope button:last-child{border-right:0}
+.map-journey-scope button[aria-pressed="true"]{background:#294839;color:#fff3df}
+.map-journey-bottom>a{font:700 12px system-ui,sans-serif;color:#294b3c;text-underline-offset:3px}
+.map-journey-description{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin-top:11px;line-height:1.45}
+.map-journey-description strong{font:700 12px system-ui,sans-serif;color:#40331f}
+.map-journey-description span{font:13px/1.5 system-ui,sans-serif;color:#655a48}
+.map-journey-disclaimer{font:italic 11px/1.5 system-ui,sans-serif;color:#80735d;margin:8px 0 0}
+.map-journey-layer{position:absolute;pointer-events:none;z-index:1;transform-origin:center center;will-change:transform;overflow:visible}
+.map-journey-layer[hidden]{display:none!important}
+.map-journey-outline{fill:none;stroke:#fff4d0;stroke-linejoin:round;stroke-linecap:round;opacity:.95}
+.map-journey-line{fill:none;stroke:#415b43;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+.map-journey-line-current{stroke:#aa5126;opacity:1}
+.map-pin-journey{box-shadow:0 0 0 4px #e8bb74a8,0 2px 9px #1c180bb8}
+.map-pin-journey-current{background:#ad6329;border-color:#fff4ce;box-shadow:0 0 0 5px #f0cc83b3,0 2px 10px #1c180bd1}
+.map-journey-panel button:focus-visible,.map-journey-panel a:focus-visible,.map-journey-panel select:focus-visible,.map-journey-panel input:focus-visible{outline:3px solid #b57d28;outline-offset:2px}
+.map-journey-panel.is-route-hidden .map-journey-description{opacity:.75}
+.map-expanded .map-journey-panel{padding:9px 13px 7px}
+.map-expanded .map-journey-heading strong{font-size:15px}
+.map-expanded .map-journey-navigation{margin-top:7px}
+.map-expanded .map-journey-navigation select{min-height:36px}
+.map-expanded .map-journey-description,.map-expanded .map-journey-disclaimer{display:none}
+@media(max-width:700px){
+ .map-journey-panel{padding:12px 11px 10px}
+ .map-journey-heading strong{font-size:17px}
+ .map-journey-check{font-size:11px}
+ .map-journey-navigation{margin-top:9px;gap:5px}
+ .map-journey-navigation>button{width:39px;min-width:39px}
+ .map-journey-navigation label{gap:5px;font-size:11px}
+ .map-journey-navigation select{font-size:12px;padding:7px;min-height:40px}
+ .map-journey-bottom{margin-top:8px}
+ .map-journey-scope button{font-size:11px;padding:7px 10px}
+ .map-journey-description{margin-top:8px}
+ .map-journey-description span{font-size:12px}
+}

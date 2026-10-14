@@ -33,6 +33,32 @@ function initThespiraMap(root) {
     {id:"surturheim", name:"Surturheim", x:693, y:238, kind:"regione", slug:"surturheim", type:"Regione montuosa settentrionale"},
     {id:"lirion", name:"Fiume Lirion", x:755, y:1162, kind:"acqua", slug:"lirion"}
   ];
+  // Percorso pubblico: ordine degli eventi giocati. Il tracciato collega i centri noti,
+  // NON identifica sentieri, strade reali, distanze o coordinate di incontri intermedi.
+  // La Gola (cap. VIII) non è cartografata: viene citata ma non inventata sulla carta.
+  const journeyChapters = [
+    {number:"I",slug:"manna",title:"Manna e Lilith-Zetto",where:"Manna",detail:"La compagnia si forma a Manna e si muove nei boschi circostanti. I singoli rifugi non sono localizzabili sulla carta.",anchor:"manna",focus:["manna"]},
+    {number:"II",slug:"reietti",title:"L’ordine di Selese Arco",where:"Nemorae, a nord di Manna",detail:"La compagnia incontra Selese, Nero e i reietti. L’accampamento è itinerante e non dispone di una posizione cartografica certa.",focus:["manna"]},
+    {number:"III",slug:"lantrelle",title:"Il rapporto di Lantrelle",where:"Lantrelle",detail:"Il gruppo raggiunge l’avamposto commerciale di Lantrelle e incontra Cato Mirel.",anchor:"lantrelle",focus:["manna","lantrelle"]},
+    {number:"IV",slug:"brugheroccia",title:"Il Babau di Brugheroccia",where:"Brugheroccia",detail:"Spostamento verso il Surturheim e sosta a Brugheroccia, presso la valle del Lirion.",anchor:"brugheroccia",focus:["lantrelle","brugheroccia"]},
+    {number:"V",slug:"obsydra",title:"Obsydra e il Vecchio Paladino Oscuro",where:"Obsydra",detail:"La compagnia raggiunge Obsydra. Le miniere e la Cava sono luoghi interni alla città, non punti autonomi della mappa continentale.",anchor:"obsydra",focus:["brugheroccia","obsydra"]},
+    {number:"VI",slug:"paludi",title:"Le paludi di Nemorae",where:"Obsydra → Brugheroccia → Roncenoir",detail:"Ritorno a Brugheroccia, poi attraversamento dei canyon del Surturheim e delle paludi settentrionali di Nemorae fino a Roncenoir.",anchor:"roncenoir",focus:["obsydra","brugheroccia","roncenoir"]},
+    {number:"VII",slug:"roncenoir",title:"Roncenoir e le Grandi Fauci",where:"Roncenoir",detail:"La compagnia soggiorna a Roncenoir. Le Acque Profonde, poco lontane, non hanno coordinate determinate sulla carta continentale.",anchor:"roncenoir",focus:["roncenoir"]},
+    {number:"VIII",slug:"gola",title:"Il Magistro della Gola",where:"Da Roncenoir verso Ebavurage",detail:"Il viaggio prosegue nella foresta. La Gola in cui avviene lo scontro con Mercer Berus non è localizzata con precisione: non viene collocata sulla mappa.",focus:["roncenoir","ebavurage"]},
+    {number:"IX",slug:"ebavurage",title:"Il mistero di Ebavurage",where:"Ebavurage · avventura in corso",detail:"La compagnia raggiunge Ebavurage. Il percorso disegnato dall’ultimo centro noto è orientativo; le indagini nel borgo sono ancora in corso.",anchor:"ebavurage",focus:["roncenoir","ebavurage"]}
+  ];
+  // I segmenti sono connettori schematici tra località confermate: nessuna via esatta è nota.
+  // Il tratto finale viene completato nel capitolo IX; nel VIII non si attribuisce una posizione alla Gola.
+  const journeyLegs = [
+    {chapter:3,from:"manna",to:"lantrelle"},
+    {chapter:4,from:"lantrelle",to:"brugheroccia"},
+    {chapter:5,from:"brugheroccia",to:"obsydra"},
+    {chapter:6,from:"obsydra",to:"brugheroccia",returning:true},
+    {chapter:6,from:"brugheroccia",to:"roncenoir"},
+    {chapter:9,from:"roncenoir",to:"ebavurage"}
+  ];
+  const pointById = new Map(mapPoints.map(p => [p.id,p]));
+  let journeyChapter = journeyChapters.length, journeyScope = "through", journeyVisible = true;
   const encyclopedia = (typeof CHRONICLES !== "undefined" && Array.isArray(CHRONICLES.places)) ? CHRONICLES.places : [];
   const wikiBySlug = new Map(encyclopedia.map(entry => [entry.slug, entry]));
   const findWiki = place => place.slug ? wikiBySlug.get(place.slug) : null;
@@ -41,6 +67,12 @@ function initThespiraMap(root) {
 
   // Il livello dei punti segue esattamente zoom e traslazione della carta;
   // le dimensioni delle icone restano costanti per leggibilità e accessibilità.
+  const journeyLayer = document.createElementNS("http://www.w3.org/2000/svg","svg");
+  journeyLayer.classList.add("map-journey-layer");
+  journeyLayer.setAttribute("viewBox","0 0 1536 2048");
+  journeyLayer.setAttribute("preserveAspectRatio","none");
+  journeyLayer.setAttribute("aria-hidden","true");
+  viewport.appendChild(journeyLayer);
   const pinsLayer = document.createElement("div");
   pinsLayer.className = "map-pins-layer";
   pinsLayer.setAttribute("aria-label", "Località indicate sulla carta");
@@ -74,6 +106,78 @@ function initThespiraMap(root) {
     <button type="button" data-filter="acqua" aria-pressed="false">Acque</button></div>
     <output class="map-filter-count" aria-live="polite"></output>`;
   frame.insertBefore(filterbar, viewport);
+  const journeyPanel = document.createElement("section");
+  journeyPanel.className = "map-journey-panel";
+  journeyPanel.setAttribute("aria-label", "Percorso della compagnia attraverso i capitoli");
+  journeyPanel.innerHTML = `<div class="map-journey-heading"><div><span class="map-journey-kicker">Il viaggio della compagnia</span><strong>La strada percorsa, capitolo dopo capitolo</strong></div><label class="map-journey-check"><input type="checkbox" data-journey-visible checked> Mostra itinerario</label></div>
+    <div class="map-journey-navigation"><button type="button" data-journey-prev aria-label="Capitolo precedente">←</button><label>Capitolo <select data-journey-select aria-label="Seleziona il capitolo del viaggio">${journeyChapters.map((c,i)=>`<option value="${i+1}">${c.number} · ${esc(c.title)}</option>`).join("")}</select></label><button type="button" data-journey-next aria-label="Capitolo successivo">→</button></div>
+    <div class="map-journey-bottom"><div class="map-journey-scope" role="group" aria-label="Estensione del percorso"><button type="button" data-journey-scope="through" aria-pressed="true">Dall’inizio</button><button type="button" data-journey-scope="chapter" aria-pressed="false">Solo il capitolo</button></div><a data-journey-link href="#/cronologia/ebavurage">Leggi il capitolo ↗</a></div>
+    <div class="map-journey-description" aria-live="polite"><strong data-journey-where></strong><span data-journey-detail></span></div>
+    <p class="map-journey-disclaimer">Tracciato orientativo tra insediamenti noti: non rappresenta le strade effettive né la posizione esatta degli incontri.</p>`;
+  frame.insertBefore(journeyPanel, filterbar);
+  const journeySelect = journeyPanel.querySelector("[data-journey-select]");
+  const journeyPath = (leg) => {
+    const a=pointById.get(leg.from), b=pointById.get(leg.to);
+    const length=Math.hypot(b.x-a.x,b.y-a.y) || 1;
+    const bend=Math.min(24,length*.12);
+    const cx=(a.x+b.x)/2-(b.y-a.y)/length*bend;
+    const cy=(a.y+b.y)/2+(b.x-a.x)/length*bend;
+    return `M ${a.x} ${a.y} Q ${cx.toFixed(1)} ${cy.toFixed(1)} ${b.x} ${b.y}`;
+  };
+  function renderJourney() {
+    const chapter=journeyChapters[journeyChapter-1];
+    journeySelect.value=String(journeyChapter);
+    journeyPanel.querySelector("[data-journey-prev]").disabled=journeyChapter===1;
+    journeyPanel.querySelector("[data-journey-next]").disabled=journeyChapter===journeyChapters.length;
+    journeyPanel.querySelectorAll("[data-journey-scope]").forEach(btn => btn.setAttribute("aria-pressed",String(btn.dataset.journeyScope===journeyScope)));
+    journeyPanel.querySelector("[data-journey-where]").textContent=`${chapter.number} · ${chapter.where}`;
+    journeyPanel.querySelector("[data-journey-detail]").textContent=chapter.detail;
+    journeyPanel.querySelector("[data-journey-link]").href=`#/cronologia/${chapter.slug}`;
+    const legs=journeyLegs.filter(leg=>journeyScope==="through"?leg.chapter<=journeyChapter:leg.chapter===journeyChapter);
+    if (journeyVisible) journeyLayer.removeAttribute("hidden"); else journeyLayer.setAttribute("hidden", "");
+    const paths=legs.map(leg=>{
+      const current=leg.chapter===journeyChapter;
+      const d=journeyPath(leg);
+      return `<path d="${d}" class="map-journey-outline" style="stroke-width:${(20/zoom).toFixed(2)}"/><path d="${d}" class="map-journey-line${current?' map-journey-line-current':''}" style="stroke-width:${(10/zoom).toFixed(2)};stroke-dasharray:${(17/zoom).toFixed(2)} ${(12/zoom).toFixed(2)}"/>`;
+    });
+    journeyLayer.innerHTML=paths.join("");
+    const reached=new Set(legs.flatMap(leg=>[leg.from,leg.to]));
+    const currentPoint=chapter.anchor;
+    if (journeyScope==="through" && journeyChapter<=2) reached.add("manna");
+    if (currentPoint) reached.add(currentPoint);
+    pinButtons.forEach((pin,id)=>{
+      pin.classList.toggle("map-pin-journey",journeyVisible && reached.has(id));
+      pin.classList.toggle("map-pin-journey-current",journeyVisible && currentPoint===id);
+    });
+    journeyPanel.classList.toggle("is-route-hidden",!journeyVisible);
+  }
+  function focusJourney() {
+    if(!baseW || !baseH || !journeyVisible)return;
+    const chapter=journeyChapters[journeyChapter-1];
+    const ids=journeyScope==="chapter"?chapter.focus:[...new Set(journeyChapters.slice(0,journeyChapter).flatMap(c=>c.focus))];
+    const positions=ids.map(id=>pointById.get(id)).filter(Boolean);
+    if(!positions.length)return;
+    const xs=positions.map(p=>p.x),ys=positions.map(p=>p.y);
+    const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+    const zoomX=(viewport.clientWidth-105)/(baseW*((maxX-minX+260)/1536));
+    const zoomY=(viewport.clientHeight-95)/(baseH*((maxY-minY+320)/2048));
+    zoom=clamp(Math.min(zoomX,zoomY),1.25,3.6);
+    dx=-((minX+maxX)/2/1536-.5)*baseW*zoom;
+    dy=-((minY+maxY)/2/2048-.5)*baseH*zoom;
+    draw();
+  }
+  on(journeyPanel,"click",e=>{
+    const prev=e.target.closest("[data-journey-prev]");
+    const next=e.target.closest("[data-journey-next]");
+    const scope=e.target.closest("[data-journey-scope]");
+    if(prev && journeyChapter>1)journeyChapter--;
+    else if(next && journeyChapter<journeyChapters.length)journeyChapter++;
+    else if(scope)journeyScope=scope.dataset.journeyScope;
+    else return;
+    closePopover();renderJourney();focusJourney();
+  });
+  on(journeySelect,"change",e=>{journeyChapter=Number(e.target.value);closePopover();renderJourney();focusJourney();});
+  on(journeyPanel.querySelector("[data-journey-visible]"),"change",e=>{journeyVisible=e.target.checked;renderJourney();if(journeyVisible)focusJourney();});
   const shortlist = document.createElement("div");
   shortlist.className = "map-shortlist";
   shortlist.setAttribute("aria-label", "Seleziona un luogo sulla carta");
@@ -160,7 +264,11 @@ function initThespiraMap(root) {
   function draw() {
     constrain();
     img.style.transform=`translate(${dx}px,${dy}px) scale(${zoom})`;
+    journeyLayer.style.transform=img.style.transform;
     pinsLayer.style.transform=img.style.transform;
+    // Mantieni uno spessore leggibile per la linea al cambiare dello zoom.
+    journeyLayer.querySelectorAll(".map-journey-outline").forEach(p=>p.style.strokeWidth=(20/zoom).toFixed(2));
+    journeyLayer.querySelectorAll(".map-journey-line").forEach(p=>{p.style.strokeWidth=(10/zoom).toFixed(2);p.style.strokeDasharray=`${(17/zoom).toFixed(2)} ${(12/zoom).toFixed(2)}`;});
     pinButtons.forEach(btn => {btn.style.transform = `translate(-50%, -100%) scale(${1/zoom})`;});
     output.textContent=`${Math.round(zoom*100)}%`;
   }
@@ -172,10 +280,12 @@ function initThespiraMap(root) {
     img.style.width=`${baseW}px`;img.style.height=`${baseH}px`;
     img.style.left=`${(viewport.clientWidth-baseW)/2}px`;
     img.style.top=`${(viewport.clientHeight-baseH)/2}px`;
-    pinsLayer.style.width=img.style.width;
-    pinsLayer.style.height=img.style.height;
-    pinsLayer.style.left=img.style.left;
-    pinsLayer.style.top=img.style.top;
+    for (const layer of [journeyLayer,pinsLayer]) {
+      layer.style.width=img.style.width;
+      layer.style.height=img.style.height;
+      layer.style.left=img.style.left;
+      layer.style.top=img.style.top;
+    }
     draw();
   }
   function zoomTo(value,x=viewport.clientWidth/2,y=viewport.clientHeight/2) {
@@ -240,8 +350,11 @@ function initThespiraMap(root) {
     }
   });
   on(document,"keydown",e=>{if(e.key==="Escape"&&expanded){e.stopPropagation();setExpanded(false);}});
-  on(img,"load",layout);
+  on(img,"load",()=>{layout();if(!journeyInitialized){journeyInitialized=true;focusJourney();}});
   const observer=new ResizeObserver(layout);observer.observe(viewport);
+  let journeyInitialized=false;
+  renderJourney();
   layout();
+  if(img.complete && img.naturalWidth>0){journeyInitialized=true;focusJourney();}
   return ()=>{observer.disconnect();teardown.forEach(f=>f());document.body.classList.remove("map-fullscreen");};
 }
