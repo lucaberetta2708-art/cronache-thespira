@@ -1,6 +1,6 @@
-/* Visualizzatore della cartografia di Thespira — atlante interattivo, fase I.
- * Segnaposti per toponimi della carta e quattro insediamenti con posizione orientativa approvata.
- * Punti nuovi distinti graficamente; il resto è ancorato alla carta originale.
+/* Atlante interattivo di Thespira: percorso narrativo, insediamenti e territori.
+ * Segnaposti HTML non scalati per mantenere forme e testi nitidi anche con lo zoom.
+ * La carta originale rimane un JPG: i toponimi stampati nel disegno hanno risoluzione finita.
  */
 function initThespiraMap(root) {
   "use strict";
@@ -29,9 +29,12 @@ function initThespiraMap(root) {
     {id:"sargona", name:"Sargona", x:635, y:1634, kind:"localita", slug:"sargona"},
     {id:"ishkar", name:"Ishkar", x:1247, y:1295, kind:"localita", slug:"ishkar"},
     {id:"nurashad", name:"Nurashad", x:1113, y:1850, kind:"localita", slug:"nurashad"},
-    {id:"nemorae", name:"Nemorae", x:452, y:537, kind:"regione", slug:"foreste-nemorae", type:"Grande regione forestale"},
-    {id:"surturheim", name:"Surturheim", x:693, y:238, kind:"regione", slug:"surturheim", type:"Regione montuosa settentrionale"},
-    {id:"lirion", name:"Fiume Lirion", x:755, y:1162, kind:"acqua", slug:"lirion"}
+    {id:"nemorae", name:"Nemorae", x:452, y:537, kind:"regione", slug:"foreste-nemorae", type:"Regione forestale"},
+    {id:"surturheim", name:"Surturheim", x:693, y:238, kind:"regione", slug:"surturheim", type:"Regione montuosa e vulcanica"},
+    {id:"aurelia", name:"Regno di Aurelia", x:1065, y:680, kind:"regione", slug:"regno-aurelia"},
+    {id:"velmora", name:"Repubblica di Velmora", x:490, y:1260, kind:"regione", slug:"repubblica-velmora"},
+    {id:"ashamir", name:"Sultanato di Ashamir", x:995, y:1550, kind:"regione", slug:"sultanato-ashamir"},
+    {id:"sevrath", name:"Deserto del Sevrath", x:840, y:1750, kind:"regione", slug:"deserto-sevrath", type:"Regione desertica"}
   ];
   // Percorso pubblico: ordine degli eventi giocati. Il tracciato collega i centri noti,
   // NON identifica sentieri, strade reali, distanze o coordinate di incontri intermedi.
@@ -82,12 +85,10 @@ function initThespiraMap(root) {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = `map-pin map-pin-${place.kind}${place.approximate ? " map-pin-approximate" : ""}`;
-    btn.style.left = `${place.x / 1536 * 100}%`;
-    btn.style.top = `${place.y / 2048 * 100}%`;
     btn.dataset.pointId = place.id;
     btn.setAttribute("aria-label", `Apri la scheda cartografica: ${place.name}`);
     btn.setAttribute("aria-pressed", "false");
-    btn.innerHTML = `<span aria-hidden="true">${place.kind === "acqua" ? "≈" : place.kind === "regione" ? "✦" : "◆"}</span><span class="map-pin-tooltip">${esc(place.name)}</span>`;
+    btn.innerHTML = `<span aria-hidden="true">${place.kind === "regione" ? "✦" : "◆"}</span><span class="map-pin-tooltip">${esc(place.name)}</span>`;
     pinsLayer.appendChild(btn);
     pinButtons.set(place.id, btn);
   }
@@ -100,10 +101,8 @@ function initThespiraMap(root) {
   filterbar.className = "map-filterbar";
   filterbar.innerHTML = `<span class="map-filter-label">Mostra</span><div class="map-filter-buttons" role="group" aria-label="Filtra segnaposti">
     <button type="button" data-filter="all" aria-pressed="true">Tutti</button>
-    <button type="button" data-filter="documented" aria-pressed="false">Con scheda</button>
-    <button type="button" data-filter="localita" aria-pressed="false">Località</button>
-    <button type="button" data-filter="regione" aria-pressed="false">Regioni</button>
-    <button type="button" data-filter="acqua" aria-pressed="false">Acque</button></div>
+    <button type="button" data-filter="localita" aria-pressed="false">Insediamenti</button>
+    <button type="button" data-filter="regione" aria-pressed="false">Territori</button></div>
     <output class="map-filter-count" aria-live="polite"></output>`;
   frame.insertBefore(filterbar, viewport);
   const journeyPanel = document.createElement("section");
@@ -188,8 +187,7 @@ function initThespiraMap(root) {
   if (banner) banner.innerHTML = '<strong>Una carta, soltanto informazioni note.</strong> I quattro nuovi borghi hanno una collocazione orientativa approvata, distinta dalle città già nominate sulla carta. Tutte le schede mostrano soltanto conoscenze già pubbliche o eventi vissuti dalla compagnia.';
 
   function visiblePlaces() {
-    return mapPoints.filter(place => activeFilter === "all" ||
-      (activeFilter === "documented" && !!findWiki(place)) || place.kind === activeFilter);
+    return mapPoints.filter(place => activeFilter === "all" || place.kind === activeFilter);
   }
   function closePopover() {
     selected = null;
@@ -201,7 +199,7 @@ function initThespiraMap(root) {
     if (activeFilter !== "all" && !visiblePlaces().includes(place)) setFilter("all");
     selected = place.id;
     const wiki = findWiki(place);
-    const kindLabel = place.kind === "regione" ? "Regione" : place.kind === "acqua" ? "Corso d’acqua" : "Località";
+    const kindLabel = place.kind === "regione" ? "Territorio" : "Insediamento";
     const description = wiki?.intro || place.intro || "Località riportata sulla carta di Thespira. Non sono ancora pubblicate altre informazioni nella wiki.";
     const type = wiki?.type || place.type || kindLabel;
     const locationNote = place.approximate ? `<p class="map-position-note">Posizione orientativa: concordata sulla base della geografia e del viaggio della compagnia.</p>` : "";
@@ -252,7 +250,7 @@ function initThespiraMap(root) {
   on(popover, "click", e => {
     if (e.target.closest(".map-popover-close")) closePopover();
   });
-  setFilter(window.matchMedia && window.matchMedia("(max-width: 640px)").matches ? "documented" : "all");
+  setFilter(window.matchMedia && window.matchMedia("(max-width: 640px)").matches ? "localita" : "all");
   function on(el,type,handler,opts) {el.addEventListener(type,handler,opts);teardown.push(()=>el.removeEventListener(type,handler,opts));}
   function clamp(value, low, high) {return Math.min(high,Math.max(low,value));}
   function constrain() {
@@ -265,11 +263,18 @@ function initThespiraMap(root) {
     constrain();
     img.style.transform=`translate(${dx}px,${dy}px) scale(${zoom})`;
     journeyLayer.style.transform=img.style.transform;
-    pinsLayer.style.transform=img.style.transform;
+    // I segnaposti sono disegnati nello spazio dello schermo: rimangono nitidi.
+    // Convertiamo le coordinate della carta in pixel del viewport ad ogni zoom/pan.
+    const vw=viewport.clientWidth, vh=viewport.clientHeight;
+    pinButtons.forEach((btn,id)=>{
+      const place=pointById.get(id);
+      btn.style.left=`${vw/2 + dx + (place.x/1536 - .5)*baseW*zoom}px`;
+      btn.style.top=`${vh/2 + dy + (place.y/2048 - .5)*baseH*zoom}px`;
+    });
+    viewport.classList.toggle("map-labels-visible",zoom>=2.15);
     // Mantieni uno spessore leggibile per la linea al cambiare dello zoom.
     journeyLayer.querySelectorAll(".map-journey-outline").forEach(p=>p.style.strokeWidth=(20/zoom).toFixed(2));
     journeyLayer.querySelectorAll(".map-journey-line").forEach(p=>{p.style.strokeWidth=(10/zoom).toFixed(2);p.style.strokeDasharray=`${(17/zoom).toFixed(2)} ${(12/zoom).toFixed(2)}`;});
-    pinButtons.forEach(btn => {btn.style.transform = `translate(-50%, -100%) scale(${1/zoom})`;});
     output.textContent=`${Math.round(zoom*100)}%`;
   }
   function layout() {
@@ -280,7 +285,7 @@ function initThespiraMap(root) {
     img.style.width=`${baseW}px`;img.style.height=`${baseH}px`;
     img.style.left=`${(viewport.clientWidth-baseW)/2}px`;
     img.style.top=`${(viewport.clientHeight-baseH)/2}px`;
-    for (const layer of [journeyLayer,pinsLayer]) {
+    for (const layer of [journeyLayer]) {
       layer.style.width=img.style.width;
       layer.style.height=img.style.height;
       layer.style.left=img.style.left;

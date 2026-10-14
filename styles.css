@@ -82,8 +82,8 @@ body.map-fullscreen{overflow:hidden}
 .map-filter-buttons button,.map-shortlist button{border:1px solid #cec0a4;background:#fffaf0;color:#433829;padding:7px 11px;border-radius:50px;font:600 12px system-ui,sans-serif;min-height:34px;cursor:pointer}
 .map-filter-buttons button[aria-pressed="true"],.map-shortlist button[aria-pressed="true"]{background:#294437;border-color:#294437;color:#ffedd3}
 .map-filter-count{color:#736651;font:12px system-ui,sans-serif;white-space:nowrap}
-.map-pins-layer{position:absolute;transform-origin:center center;pointer-events:none;z-index:2;will-change:transform}
-.map-pin{position:absolute;box-sizing:border-box;display:grid;place-items:center;width:33px;height:33px;min-width:33px;min-height:33px;padding:0;border-radius:50%;border:2px solid #f9edc9;background:#203a2c;color:#fff5d8;box-shadow:0 2px 8px #1a1309b8;font:17px Georgia,serif;pointer-events:auto;cursor:pointer;transform-origin:center bottom;transition:background-color .14s ease,border-color .14s ease}
+.map-pins-layer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.map-pin{position:absolute;box-sizing:border-box;display:grid;place-items:center;width:33px;height:33px;min-width:33px;min-height:33px;padding:0;border-radius:50%;border:2px solid #f9edc9;background:#203a2c;color:#fff5d8;box-shadow:0 2px 8px #1a1309b8;font:17px Georgia,serif;pointer-events:auto;cursor:pointer;transform:translate(-50%,-100%);transition:background-color .14s ease,border-color .14s ease}
 .map-pin-regione{background:#80643b;color:#fff3d0}.map-pin-acqua{background:#3d6178;color:#fff}
 .map-pin[aria-pressed="true"]{background:#ad6e24;border-color:#fff;outline:3px solid #28392d;outline-offset:2px}
 .map-pin[hidden]{display:none!important}
@@ -159,3 +159,9 @@ body.map-fullscreen{overflow:hidden}
  .map-journey-description{margin-top:8px}
  .map-journey-description span{font-size:12px}
 }
+
+/* Il testo interattivo non è rasterizzato: resta leggibile a qualsiasi zoom.
+   I nomi incorporati nel JPG originale rimangono, inevitabilmente, a risoluzione finita. */
+.map-viewport.map-labels-visible .map-pin:not([hidden]) .map-pin-tooltip{visibility:visible;opacity:1}
+.map-viewport.map-labels-visible .map-pin-tooltip{font-size:12px;background:#20372feF;border-color:#e7c88e}
+.map-viewport.map-labels-visible .map-pin[aria-pressed="true"] .map-pin-tooltip{background:#ad6e24;color:#fff}
